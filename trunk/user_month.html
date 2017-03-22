@@ -1,0 +1,339 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <link href="css/basic.css" rel="stylesheet" type="text/css" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="js/jquery-1.9.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/echarts.js"></script>
+</head>
+
+<body>
+
+    <div id="main" style="height:500px"></div>
+<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="height:400px"></div>
+    <!-- ECharts单文件引入 -->    
+    <script type="text/javascript">
+        // 路径配置
+        require.config({
+            paths: {
+                echarts: 'http://echarts.baidu.com/build/dist'
+            }
+        });
+        
+        // 使用
+        require(
+            [
+                'echarts',
+                'echarts/chart/map' // 使用柱状图就加载bar模块，按需加载
+            ],
+            function (ec) {
+
+
+                function randomData1() {
+                    return Math.round(Math.random()*1000);
+                }
+                function randomData2() {
+                    return Math.round(Math.random()*1000);
+                }
+                function randomData3() {
+                    return Math.round(Math.random()*1000);
+                }
+                function randomData4() {
+                    return Math.round(Math.random()*1000);
+                }
+                function randomData5() {
+                    return Math.round(Math.random()*1000);
+                }
+                function randomData6() {
+                    return Math.round(Math.random()*1000);
+                }
+                function randomData7() {
+                    return Math.round(Math.random()*1000);
+                }
+                function randomData8() {
+                    return Math.round(Math.random()*1000);
+                }
+                function randomData9() {
+                    return Math.round(Math.random()*1000);
+                }
+                function randomData10() {
+                    return Math.round(Math.random()*1000);
+                }
+                // 基于准备好的dom，初始化echarts图表
+                var myChart = ec.init(document.getElementById('main')); 
+                
+                var option = {
+                        timeline:{
+                            data:[
+                                '2001-01-01','2002-01-01','2003-01-01','2004-01-01','2005-01-01'
+                            ],
+                            label : {
+                                formatter : function(s) {
+                                    return s.slice(0, 4);
+                                }
+                            },
+                            autoPlay : true,
+                            playInterval : 1000
+                        },
+                        options:[
+                            {
+                                title : {
+                                    'text':'2001年客户省份分布',
+                                    'subtext':'by数据统计组'
+                                },
+                                tooltip : {'trigger':'item'},
+                                toolbox : {
+                                    'show':true, 
+                                    'feature':{
+                                        'mark':{'show':true},
+                                        'dataView':{'show':true,'readOnly':false},
+                                        'restore':{'show':true},
+                                        'saveAsImage':{'show':true}
+                                    }
+                                },
+                                dataRange: {
+                                    min: 0,
+                                    max : 1000,
+                                    text:['高','低'],           // 文本，默认为数值文本
+                                    calculable : true,
+                                    x: 'left',
+                                    color: ['orangered','yellow','lightskyblue']
+                                },
+                                series : [
+                                    {
+                                        'name':'万人数',
+                                        'type':'map',
+                                         itemStyle:{ // These statements will decide if province label will be emerging
+                                            normal:{
+                                                label:{
+                                                    show:true,
+                                                    textStyle: {
+                                                     //  color: "rgb(249, 249, 249)"
+                                                    }
+                                                }
+                                            },
+                                        },
+                                        'data': [
+                                                {name: '北京',value: randomData1() },
+                                                {name: '天津',value: randomData1() },
+                                                {name: '上海',value: randomData1() },
+                                                {name: '重庆',value: randomData1() },
+                                                {name: '河北',value: randomData1() },
+                                                {name: '河南',value: randomData1() },
+                                                {name: '云南',value: randomData1() },
+                                                {name: '辽宁',value: randomData1() },
+                                                {name: '黑龙江',value: randomData1() },
+                                                {name: '湖南',value: randomData1() },
+                                                {name: '安徽',value: randomData1() },
+                                                {name: '山东',value: randomData1() },
+                                                {name: '新疆',value: randomData1() },
+                                                {name: '江苏',value: randomData1() },
+                                                {name: '浙江',value: randomData1() },
+                                                {name: '江西',value: randomData1() },
+                                                {name: '湖北',value: randomData1() },
+                                                {name: '广西',value: randomData1() },
+                                                {name: '甘肃',value: randomData1() },
+                                                {name: '山西',value: randomData1() },
+                                                {name: '内蒙古',value: randomData1() },
+                                                {name: '陕西',value: randomData1() },
+                                                {name: '吉林',value: randomData1() },
+                                                {name: '福建',value: randomData1() },
+                                                {name: '贵州',value: randomData1() },
+                                                {name: '广东',value: randomData1() },
+                                                {name: '青海',value: randomData1() },
+                                                {name: '西藏',value: randomData1() },
+                                                {name: '四川',value: randomData1() },
+                                                {name: '宁夏',value: randomData1() },
+                                                {name: '海南',value: randomData1() }
+
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                title : {'text':'2002年客户省份分布'},
+                                series : [
+                                    {
+                                        'name':'人数',
+                                        'type':'map',
+                                        'data': [
+                                                {name: '北京',value: randomData2() },
+                                                {name: '天津',value: randomData2() },
+                                                {name: '上海',value: randomData2() },
+                                                {name: '重庆',value: randomData2() },
+                                                {name: '河北',value: randomData2() },
+                                                {name: '河南',value: randomData2() },
+                                                {name: '云南',value: randomData2() },
+                                                {name: '辽宁',value: randomData2() },
+                                                {name: '黑龙江',value: randomData2() },
+                                                {name: '湖南',value: randomData2() },
+                                                {name: '安徽',value: randomData2() },
+                                                {name: '山东',value: randomData2() },
+                                                {name: '新疆',value: randomData2() },
+                                                {name: '江苏',value: randomData2() },
+                                                {name: '浙江',value: randomData2() },
+                                                {name: '江西',value: randomData2() },
+                                                {name: '湖北',value: randomData2() },
+                                                {name: '广西',value: randomData2() },
+                                                {name: '甘肃',value: randomData2() },
+                                                {name: '山西',value: randomData2() },
+                                                {name: '内蒙古',value: randomData2() },
+                                                {name: '陕西',value: randomData2() },
+                                                {name: '吉林',value: randomData2() },
+                                                {name: '福建',value: randomData2() },
+                                                {name: '贵州',value: randomData2() },
+                                                {name: '广东',value: randomData2() },
+                                                {name: '青海',value: randomData2() },
+                                                {name: '西藏',value: randomData2() },
+                                                {name: '四川',value: randomData2() },
+                                                {name: '宁夏',value: randomData2() },
+                                                {name: '海南',value: randomData2() }
+
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                title : {'text':'2003年客户省份分布'},
+                                series : [
+                                    {
+                                        'name':'人数',
+                                        'type':'map',
+                                        'data': [
+                                                {name: '北京',value: randomData2() },
+                                                {name: '天津',value: randomData2() },
+                                                {name: '上海',value: randomData2() },
+                                                {name: '重庆',value: randomData2() },
+                                                {name: '河北',value: randomData2() },
+                                                {name: '河南',value: randomData2() },
+                                                {name: '云南',value: randomData2() },
+                                                {name: '辽宁',value: randomData2() },
+                                                {name: '黑龙江',value: randomData2() },
+                                                {name: '湖南',value: randomData2() },
+                                                {name: '安徽',value: randomData2() },
+                                                {name: '山东',value: randomData2() },
+                                                {name: '新疆',value: randomData2() },
+                                                {name: '江苏',value: randomData2() },
+                                                {name: '浙江',value: randomData2() },
+                                                {name: '江西',value: randomData2() },
+                                                {name: '湖北',value: randomData2() },
+                                                {name: '广西',value: randomData2() },
+                                                {name: '甘肃',value: randomData2() },
+                                                {name: '山西',value: randomData2() },
+                                                {name: '内蒙古',value: randomData2() },
+                                                {name: '陕西',value: randomData2() },
+                                                {name: '吉林',value: randomData2() },
+                                                {name: '福建',value: randomData2() },
+                                                {name: '贵州',value: randomData2() },
+                                                {name: '广东',value: randomData2() },
+                                                {name: '青海',value: randomData2() },
+                                                {name: '西藏',value: randomData2() },
+                                                {name: '四川',value: randomData2() },
+                                                {name: '宁夏',value: randomData2() },
+                                                {name: '海南',value: randomData2() }
+
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                title : {'text':'2004年客户省份分布'},
+                                series : [
+                                    {
+                                        'name':'人数',
+                                        'type':'map',
+                                        'data': [
+                                                {name: '北京',value: randomData3(), },
+                                                {name: '天津',value: randomData3() },
+                                                {name: '上海',value: randomData3() },
+                                                {name: '重庆',value: randomData3() },
+                                                {name: '河北',value: randomData3() },
+                                                {name: '河南',value: randomData3() },
+                                                {name: '云南',value: randomData3() },
+                                                {name: '辽宁',value: randomData3() },
+                                                {name: '黑龙江',value: randomData3() },
+                                                {name: '湖南',value: randomData3() },
+                                                {name: '安徽',value: randomData3() },
+                                                {name: '山东',value: randomData3() },
+                                                {name: '新疆',value: randomData3() },
+                                                {name: '江苏',value: randomData3() },
+                                                {name: '浙江',value: randomData3() },
+                                                {name: '江西',value: randomData3() },
+                                                {name: '湖北',value: randomData3() },
+                                                {name: '广西',value: randomData3() },
+                                                {name: '甘肃',value: randomData3() },
+                                                {name: '山西',value: randomData3() },
+                                                {name: '内蒙古',value: randomData3() },
+                                                {name: '陕西',value: randomData3() },
+                                                {name: '吉林',value: randomData3() },
+                                                {name: '福建',value: randomData3() },
+                                                {name: '贵州',value: randomData3() },
+                                                {name: '广东',value: randomData3() },
+                                                {name: '青海',value: randomData3() },
+                                                {name: '西藏',value: randomData3() },
+                                                {name: '四川',value: randomData3() },
+                                                {name: '宁夏',value: randomData3() },
+                                                {name: '海南',value: randomData3() }
+
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                title : {'text':'2005年客户省份分布'},
+                                series : [
+                                    {
+                                        'name':'人数',
+                                        'type':'map',
+                                        'data': [
+                                                {name: '北京',value: randomData4() },
+                                                {name: '天津',value: randomData4() },
+                                                {name: '上海',value: randomData4() },
+                                                {name: '重庆',value: randomData4() },
+                                                {name: '河北',value: randomData4() },
+                                                {name: '河南',value: randomData4() },
+                                                {name: '云南',value: randomData4() },
+                                                {name: '辽宁',value: randomData4() },
+                                                {name: '黑龙江',value: randomData4() },
+                                                {name: '湖南',value: randomData4() },
+                                                {name: '安徽',value: randomData4() },
+                                                {name: '山东',value: randomData4() },
+                                                {name: '新疆',value: randomData4() },
+                                                {name: '江苏',value: randomData4() },
+                                                {name: '浙江',value: randomData4() },
+                                                {name: '江西',value: randomData4() },
+                                                {name: '湖北',value: randomData4() },
+                                                {name: '广西',value: randomData4() },
+                                                {name: '甘肃',value: randomData4() },
+                                                {name: '山西',value: randomData4() },
+                                                {name: '内蒙古',value: randomData4() },
+                                                {name: '陕西',value: randomData4() },
+                                                {name: '吉林',value: randomData4() },
+                                                {name: '福建',value: randomData4() },
+                                                {name: '贵州',value: randomData4() },
+                                                {name: '广东',value: randomData4() },
+                                                {name: '青海',value: randomData4() },
+                                                {name: '西藏',value: randomData4() },
+                                                {name: '四川',value: randomData4() },
+                                                {name: '宁夏',value: randomData4() },
+                                                {name: '海南',value: randomData4() }
+
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    };
+                    
+        
+                // 为echarts对象加载数据 
+                myChart.setOption(option); 
+            }
+        );
+    </script>
+</body>
+</html>

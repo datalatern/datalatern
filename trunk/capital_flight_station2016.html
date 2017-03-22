@@ -1,0 +1,346 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<!-- /.navbar-collapse -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <link href="css/basic.css" rel="stylesheet" type="text/css" />
+    <link href="css/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <style type="text/css">
+</style>
+</head>
+
+<body>
+    <nav class="navbar navbar-default new-nav">
+  <div class="container-fluid">
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+
+       <!--  <li class="active"><a href="javascript:;">飞机路经机场图</a></li>
+
+        <li class=""><a href="/dream">商业场景</a></li> -->
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+    <div id="main" style="height:600px"></div>
+<script src="js/jquery-1.9.1.min.js"></script>
+<script src="css/bootstrap/js/bootstrap.min.js"></script>
+<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="height:1700px"></div>
+    <!-- ECharts单文件引入 -->
+    <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+    <script src="http://echarts.baidu.com/echarts2/doc/example/theme/dark.js"></script>
+    <script type="text/javascript">
+        // 路径配置
+        require.config({
+            paths: {
+                echarts: 'http://echarts.baidu.com/build/dist'
+            }
+        });
+        
+        // 使用
+        require(
+            [
+                'echarts',
+                'echarts/chart/map' // 使用柱状图就加载bar模块，按需加载
+            ],
+            function (ec) {
+                // 基于准备好的dom，初始化echarts图表
+                var myChart = ec.init(document.getElementById('main')); 
+                
+                var placeList = [
+                    {name:'尔山伊尔施机场',geoCoord:[119.929568,47.315574]},
+                    {name:'宁机场',geoCoord:[81.339643,43.958538]},
+                    {name:'州新郑国际机场',geoCoord:[113.852683,34.530807]},
+                    {name:'阳北郊机场',geoCoord:[112.398812,34.741476]},
+                    {name:'阳北郊机场',geoCoord:[114.358908,36.134479]},
+                    {name:'宁曹家堡机场',geoCoord:[102.046527,36.531243]},
+                    {name:'冲驼峰机场',geoCoord:[98.489369,24.942615]},
+                    {name:'中城固机场',geoCoord:[107.208124,33.127829]},
+                    {name:'林榆阳机场',geoCoord:[109.608985,38.367685]},
+                    {name:'康机场',geoCoord:[108.946255,32.713536]},
+                    {name:'州中川国际机场',geoCoord:[103.622763,36.512275]},
+                    {name:'峪关机场',geoCoord:[98.348848,39.868617]},
+                    {name:'昌金川机场',geoCoord:[102.352908,38.546691]},
+                    {name:'水麦积山机场',geoCoord:[105.874649,34.560739]},
+                    {name:'掖甘州机场',geoCoord:[100.662678,38.820469]},
+                    {name:'泉机场',geoCoord:[94.811195,40.172536]},
+                    {name:'阳西峰机场',geoCoord:[107.617272,35.807496]},
+                    {name:'施许家坪机场',geoCoord:[109.492771,30.325586]},
+                    {name:'沙黄花国际机场',geoCoord:[113.226919,28.192531]},
+                    {name:'阳南岳机场',geoCoord:[112.624378,26.728479]},
+                    {name:'头二里半机场',geoCoord:[110.01111,40.571959]},
+                    {name:'春林都机场',geoCoord:[81.334253,47.767662]},
+                    {name:'田机场',geoCoord:[79.881109,37.046612]},
+                    {name:'州五桥机场',geoCoord:[108.438668,30.804131]},
+                    {name:'市机场',geoCoord:[98.536384,24.4085]},
+                    {name:'定机场',geoCoord:[101.75837,30.136084]},
+                    {name:'尔津喀纳斯机场',geoCoord:[87.011791,48.230671]},
+                    {name:'拉提机场',geoCoord:[83.385719,43.435833]},
+                    {name:'白山机场',geoCoord:[127.620841,42.072469]},
+                    {name:'建龙岩冠豸山机场',geoCoord:[116.765554,25.685391]},
+                    {name:'平机场',geoCoord:[109.165119,26.322642]},
+                    {name:'尔木机场',geoCoord:[94.796812,36.408467]},
+                    {name:'城机场',geoCoord:[83.349021,46.676323]},
+                    {name:'勒泰机场',geoCoord:[88.096306,47.760323]},
+                    {name:'京南苑机场',geoCoord:[116.403467,39.797624]},
+                    {name:'京首都国际机场',geoCoord:[116.62117,40.0611]},
+                    {name:'津滨海国际机场',geoCoord:[117.365426,39.135926]},
+                    {name:'海浦东国际机场',geoCoord:[121.81502,31.157386]},
+                    {name:'海虹桥国际机场',geoCoord:[121.352836,31.199817]},
+                    {name:'庆江北国际机场',geoCoord:[106.64489,29.723643]},
+                    {name:'德桃花源机场',geoCoord:[111.649933,28.926913]},
+                    {name:'家界荷花机场',geoCoord:[110.451944,29.114617]},
+                    {name:'树巴塘机场',geoCoord:[97.045079,32.843811]},
+                    {name:'川河东国际机场',geoCoord:[106.396727,38.329916]},
+                    {name:'原六盘山机场',geoCoord:[106.232272,36.082673]},
+                    {name:'卫沙坡头机场',geoCoord:[105.163408,37.575209]},
+                //    {name:'鲁木齐地窝堡国际机场',geoCoord:[87.484684,43.90969]},
+                //    {name:'拉玛依机场',geoCoord:[84.965837,45.474533]},
+                    {name:'鲁番交河机场',geoCoord:[89.109909,43.034312]},
+                   {name:'密机场',geoCoord:[93.66387,42.846955]},
+                    {name:'乐阿拉山口机场',geoCoord:[82.309316,44.906311]},
+                    {name:'尔勒机场',geoCoord:[86.14977,41.628738]},
+                 //   {name:'克苏机场',geoCoord:[80.304945,41.265827]},
+                  //  {name:'什机场',geoCoord:[76.020707,39.542484]},
+                    {name:'南遥墙国际机场',geoCoord:[117.217033,36.856054]},
+                    {name:'岛流亭国际机场',geoCoord:[120.392499,36.272965]},
+                    {name:'营胜利机场',geoCoord:[118.796593,37.515693]},
+                    {name:'台蓬莱国际机场',geoCoord:[120.998674,37.664345]},
+                    {name:'安二十里铺机场',geoCoord:[109.563193,36.64553]},
+                    {name:'色巴马机场',geoCoord:[106.978638,23.721448]},
+                    {name:'口美兰国际机场',geoCoord:[110.466232,19.945878]},
+                    {name:'亚凤凰国际机场',geoCoord:[109.414883,18.313457]},
+                    {name:'阳姜营机场',geoCoord:[112.626396,32.987077]},
+                    {name:'汉天河国际机场',geoCoord:[114.217379,30.776258]},
+                    {name:'昌三峡机场',geoCoord:[111.492331,30.552947]},
+                    {name:'阳刘集机场',geoCoord:[112.301567,32.155506]},
+                    {name:'江三义机场',geoCoord:[100.255596,26.674474]},
+                    {name:'寨黄龙机场',geoCoord:[103.694725,32.856884]},
+                    {name:'洱思茅机场',geoCoord:[100.969591,22.799377]},
+                    {name:'山普者黑机场',geoCoord:[104.340542,23.569081]},
+                    {name:'双版纳嘎洒机场',geoCoord:[100.774319,21.977242]},
+                    {name:'理机场',geoCoord:[100.330443,25.653529]},
+                    {name:'都双流国际机场',geoCoord:[103.965204,30.584712]},
+                    {name:'枝花保安营机场',geoCoord:[101.802194,26.540825]},
+                    {name:'州蓝田机场',geoCoord:[105.388594,28.847541]},
+                    {name:'阳南郊机场',geoCoord:[104.756519,31.431816]},
+                    {name:'元盘龙机场',geoCoord:[105.711194,32.39893]},
+                    {name:'充高坪机场',geoCoord:[106.172461,30.79416]},
+                    {name:'宾菜坝机场',geoCoord:[104.562193,28.801421]},
+                    {name:'州河市机场',geoCoord:[107.437962,31.13643]},
+                    {name:'海金湾机场',geoCoord:[113.381493,22.015462]},
+                    {name:'昌青山机场',geoCoord:[102.196289,27.98489]},
+                    {name:'阳龙洞堡国际机场',geoCoord:[106.806869,26.547021]},
+                    {name:'义新舟机场',geoCoord:[107.2604,27.805916]},
+                    {name:'仁凤凰机场',geoCoord:[109.316852,27.888212]},
+                    {name:'义万峰林机场',geoCoord:[104.965882,25.087013]},
+                    {name:'节飞雄机场',geoCoord:[105.487725,27.26632]},
+                    {name:'明长水国际机场',geoCoord:[102.936944,25.104474]},
+                    {name:'山云瑞机场',geoCoord:[99.172129,25.057749]},
+                    {name:'庆香格里拉机场',geoCoord:[99.689555,27.799121]},
+                    {name:'萨贡嘎国际机场',geoCoord:[90.908025,29.296161]},
+                    {name:'都邦达机场',geoCoord:[97.113613,30.554397]},
+                    {name:'波机场',geoCoord:[107.974374,25.44941]},
+                    {name:'江武陵山机场',geoCoord:[108.840418,29.520791]},
+                    {name:'车龟兹机场',geoCoord:[82.883424,41.688588]},
+                    {name:'煌机场',geoCoord:[94.811195,40.172536]},
+                    {name:'吉朝阳川国际机场',geoCoord:[129.454642,42.895429]},
+                    {name:'阳西关机场',geoCoord:[115.750677,32.882857]},
+                    {name:'州九华山机场',geoCoord:[117.695397,30.742646]},
+                    {name:'州长乐国际机场',geoCoord:[119.681241,25.934816]},
+                    {name:'门高崎国际机场',geoCoord:[118.140208,24.539503]},
+                    {name:'州晋江国际机场',geoCoord:[118.598594,24.806761]},
+                    {name:'昌昌北国际机场',geoCoord:[115.921518,28.863372]},
+                    {name:'德镇罗家机场',geoCoord:[117.190106,29.338375]},
+                    {name:'江庐山机场',geoCoord:[115.813805,29.488738]},
+                    {name:'州黄金机场',geoCoord:[114.78979,25.851316]},
+                    {name:'安机场',geoCoord:[114.754321,26.857204]},
+                    {name:'阳机场',geoCoord:[120.448886,41.552705]},
+                    {name:'春龙嘉国际机场',geoCoord:[125.703786,44.000999]},
+                    {name:'化机场',geoCoord:[125.923336,41.713645]},
+                    {name:'尔滨太平国际机场',geoCoord:[126.246145,45.629936]},
+                    {name:'齐哈尔三家子机场',geoCoord:[123.931125,47.259933]},
+                    {name:'西兴凯湖机场',geoCoord:[131.19407,45.309138]},
+                    {name:'庆萨尔图机场',geoCoord:[125.145801,46.755079]},
+                    {name:'木斯东郊机场',geoCoord:[130.469934,46.853251]},
+                    {name:'丹江海浪机场',geoCoord:[129.596095,44.543339]},
+                    {name:'河瑷珲机场',geoCoord:[127.326404,50.186652]},
+                    {name:'冈山机场',geoCoord:[114.754321,26.857204]},
+                    {name:'林浩特机场',geoCoord:[115.972426,43.925265]},
+                    {name:'州奔牛国际机场',geoCoord:[119.790679,31.917769]},
+                    {name:'州机场',geoCoord:[120.623937,31.307735]},
+                    {name:'通兴东机场',geoCoord:[120.986705,32.076878]},
+                    {name:'云港白塔埠机场',geoCoord:[118.888422,34.57024]},
+                    {name:'安涟水机场',geoCoord:[119.141458,33.79383]},
+                    {name:'城南洋机场',geoCoord:[120.215175,33.436101]},
+                    {name:'州泰州机场',geoCoord:[119.725804,32.565303]},
+                    {name:'州萧山国际机场',geoCoord:[120.443406,30.238654]},
+                    {name:'波栎社国际机场',geoCoord:[121.472906,29.824821]},
+                    {name:'州龙湾国际机场',geoCoord:[120.858121,27.918523]},
+                    {name:'州机场',geoCoord:[118.907664,28.974229]},
+                    {name:'山普陀山机场',geoCoord:[122.368207,29.938086]},
+                    {name:'州路桥机场',geoCoord:[121.428145,28.56122]},
+                    {name:'肥新桥国际机场',geoCoord:[116.976059,31.9929]},
+                    {name:'庆天柱山机场',geoCoord:[117.058933,30.588696]},
+                    {name:'山屯溪国际机场',geoCoord:[118.265538,29.733374]},
+             //       {name:'原武宿国际机场',geoCoord:[112.641844,37.759825]},
+                    {name:'同云冈机场',geoCoord:[113.493758,40.063971]},
+                    {name:'治王村机场',geoCoord:[113.134367,36.251826]},
+                    {name:'城关公机场',geoCoord:[111.049722,35.119172]},
+                    {name:'和浩特白塔国际机场',geoCoord:[111.829296,40.860529]},
+                    {name:'海机场',geoCoord:[106.814868,39.799205]},
+                    {name:'峰玉龙机场',geoCoord:[118.844597,42.162092]},
+                    {name:'辽机场',geoCoord:[122.216952,43.565156]},
+                    {name:'尔多斯伊金霍洛机场',geoCoord:[109.873042,39.507607]},
+                    {name:'彦淖尔天吉泰机场',geoCoord:[107.753707,40.930387]},
+                    {name:'阳桃仙国际机场',geoCoord:[123.500408,41.643593]},
+                    {name:'连国际机场',geoCoord:[121.550463,38.968847]},
+                    {name:'顺黄果树机场',geoCoord:[105.883145,26.259809]},
+                    {name:'洲里西郊机场',geoCoord:[117.346433,49.578928]},
+                    {name:'家庄正定国际机场',geoCoord:[114.704605,38.282671]},
+                    {name:'山三女河机场',geoCoord:[118.006218,39.7303]},
+                    {name:'皇岛山海关机场',geoCoord:[119.729475,39.972585]},
+                    {name:'郸机场',geoCoord:[114.441706,36.530018]},
+                    {name:'山腾鳌机场',geoCoord:[122.868804,41.108653]},
+                    {name:'京禄口国际机场',geoCoord:[118.877686,31.738917]},
+                    {name:'锡硕放国际机场',geoCoord:[120.437386,31.509523]},
+                    {name:'州观音国际机场',geoCoord:[117.567361,34.058054]},
+                    {name:'河古莲机场',geoCoord:[122.43343,52.932091]},
+                    {name:'拉尔东山机场',geoCoord:[119.833005,49.218347]},
+                    {name:'乌机场',geoCoord:[120.038869,29.346399]},
+                    {name:'州零陵机场',geoCoord:[111.624354,26.347486]},
+                    {name:'化芷江机场',geoCoord:[109.712109,27.447604]},
+                    {name:'州白云国际机场',geoCoord:[113.309389,23.392373]},
+                    {name:'圳宝安国际机场',geoCoord:[113.820131,22.630569]},
+                    {name:'阳潮汕国际机场',geoCoord:[116.519223,23.554619]},
+                    {name:'山沙堤机场',geoCoord:[113.077068,23.073803]},
+                    {name:'县长岗岌机场',geoCoord:[116.115523,24.269302]},
+                    {name:'宁吴圩国际机场',geoCoord:[108.192499,22.606707]},
+                    {name:'州白莲机场',geoCoord:[109.409919,24.209098]},
+                    {name:'林两江国际机场',geoCoord:[110.058192,25.221343]},
+                    {name:'州长洲岛机场',geoCoord:[111.262547,23.459468]},
+                    {name:'海福成机场',geoCoord:[109.298737,21.546925]},
+                    {name:'通机场',geoCoord:[103.761262,27.330297]},
+                    {name:'夷山机场',geoCoord:[118.011532,27.710607]},
+                    {name:'喀则和平机场',geoCoord:[89.307203,29.352643]},
+                    {name:'芝米林机场',geoCoord:[94.342806,29.312636]},
+                    {name:'安咸阳国际机场',geoCoord:[108.76709,34.441706]},
+                    {name:'坊机场',geoCoord:[119.125659,36.647118]},
+                    {name:'宁曲阜机场',geoCoord:[116.363233,35.303038]},
+                    {name:'海大水泊机场',geoCoord:[122.24825,37.19525]},
+                    {name:'沂沭埠岭机场',geoCoord:[118.419676,35.054478]},
+                    {name:'尔山伊尔施机场',geoCoord:[119.929568,47.315574]},
+                    {name:'里黄平机场',geoCoord:[107.99003,26.978687]},
+                    {name:'州五台山机场',geoCoord:[112.997697,38.605583]},
+                    {name:'春明月山机场',geoCoord:[114.323092,27.802844]}
+
+               ]
+                option = {
+                    backgroundColor: '#fff', //#1b1b1b',
+                    color: [
+                     //   'rgba(255, 255, 255, 0.8)',
+                     //   'rgba(14, 241, 242, 0.8)',
+                      //  'rgba(37, 140, 249, 0.8)'
+                    ],
+                    title : {
+                        text: 'xx飞机中转机场分布图',
+                        subtext: '',
+                        x:'center',
+                        textStyle : {
+                            color: '#ff0000'
+                        }
+                    },
+                    legend: {
+                        orient: 'vertical',
+                        x:'left',
+                        data:['强','中','弱'],
+                        textStyle : {
+                            color: '#fff'
+                        }
+                    },
+
+                    series : [
+                        {
+                            name: '弱',
+                            type: 'map',
+                            mapType: 'china',
+                            itemStyle:{
+                                normal:{
+                                    borderColor:'rgba(100,149,237,1)',
+                                    borderWidth:1,
+                                    areaStyle:{
+                                        color: '#fff', // #1b1b1b'
+                                    }
+                                }
+                            },
+                            data : [],
+                            markPoint : {
+                                symbolSize: 1,
+                                large: true,
+                                effect : {
+                                    show: true
+                                },
+                                data : (function(){
+                                    var data = [];
+                                    var len = 30;
+                                    var geoCoord
+                                    while(len--) {
+                                        geoCoord = placeList[len % placeList.length].geoCoord;
+                                        data.push({
+                                            name : placeList[len % placeList.length].name + len,
+                                            value : 10,
+                                            geoCoord : [
+                                                geoCoord[0] + Math.random() * 2 - 1,
+                                                geoCoord[1] + Math.random() * 3 - 1
+                                            ]
+                                        })
+                                    }
+                                    return data;
+                                })()
+                            }
+                        },
+
+                        {
+                            name: '强',
+                            type: 'map',
+                            mapType: 'china',
+                            hoverable: false,
+                            roam:true,
+                            data : [],
+                            markPoint : {
+                                symbol : 'diamond',
+                                symbolSize: 6,
+                                large: true,
+                                effect : {
+                                    show: true
+                                },
+                                data : (function(){
+                                    var data = [];
+                                    var len = placeList.length;
+                                    while(len--) {
+                                        data.push({
+                                            name : placeList[len].name,
+                                            value : 50,
+                                            geoCoord : placeList[len].geoCoord
+                                        })
+                                    }
+                                    return data;
+                                })()
+                            }
+                        }   
+                    ]
+                };
+                    
+                // 为echarts对象加载数据 
+                myChart.setOption(option); 
+            }
+        );
+    </script>
+</body>
+</html>

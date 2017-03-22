@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <title>H+ 后台主题UI框架 - 选项卡 &amp; 面板</title>
+    <meta name="keywords" content="H+后台主题,后台bootstrap框架,会员中心主题,后台HTML,响应式后台">
+    <meta name="description" content="H+是一个完全响应式，基于Bootstrap3最新版本开发的扁平化主题，她采用了主流的左右两栏式布局，使用了Html5+CSS3等现代技术">
+
+    <link rel="shortcut icon" href="favicon.ico"> <link href="css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+    <link href="css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link href="css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="css/plugins/chosen/chosen.css" rel="stylesheet">
+    <link href="css/plugins/colorpicker/css/bootstrap-colorpicker.min.css" rel="stylesheet">
+    <link href="css/plugins/cropper/cropper.min.css" rel="stylesheet">
+    <link href="css/plugins/switchery/switchery.css" rel="stylesheet">
+    <link href="css/plugins/jasny/jasny-bootstrap.min.css" rel="stylesheet">
+    <link href="css/plugins/nouslider/jquery.nouislider.css" rel="stylesheet">
+    <link href="css/plugins/datapicker/datepicker3.css" rel="stylesheet">
+    <link href="css/plugins/ionRangeSlider/ion.rangeSlider.css" rel="stylesheet">
+    <link href="css/plugins/ionRangeSlider/ion.rangeSlider.skinFlat.css" rel="stylesheet">
+    <link href="css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" rel="stylesheet">
+    <link href="css/plugins/clockpicker/clockpicker.css" rel="stylesheet">
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link href="css/style.min.css?v=4.0.0" rel="stylesheet"><base target="_blank">
+	 <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.18.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.18.0/mapbox-gl.css' rel='stylesheet' />
+	<style>
+        body { margin:0; padding:0; }
+        #map { position:absolute; top:280px; bottom:0; width:100%; }
+    </style>
+</head>
+
+<body class="gray-bg">
+    <div class="wrapper wrapper-content animated fadeIn" >
+        <div class="row">
+            <div class="col-sm-9">
+                <div class="tabs-container">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#tab-1" aria-expanded="true"> 日期选择</a>
+                        </li>
+                        <li class=""><a data-toggle="tab" href="#tab-2" aria-expanded="false">时间选择</a>
+                        </li>
+						<li class=""><a data-toggle="tab" href="#tab-3" aria-expanded="false">区域选择</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div id="tab-1" class="tab-pane active">
+                                        <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>日期选择</h5>
+                        <div class="ibox-tools">
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a>
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="form_advanced.html#">
+                                <i class="fa fa-wrench"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-user">
+                                <li><a href="form_advanced.html#">选项1</a>
+                                </li>
+                                <li><a href="form_advanced.html#">选项2</a>
+                                </li>
+                            </ul>
+                            <a class="close-link">
+                                <i class="fa fa-times"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <h3>
+                                请点击选择日期
+                        </h3>
+                        <div class="form-group" id="data_1">
+                            <div class="input-group date">
+                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                <input type="text" class="form-control" value="2016-5-31">
+                            </div>
+                        </div>              
+                    </div>
+                </div>
+                        </div>
+                        <div id="tab-2" class="tab-pane">
+                         <div class="row">
+            <div class="col-sm-12">
+                <div class="ibox">
+                    <div class="ibox-title">
+                        <h5>时间选择</h5>
+                        <div class="ibox-tools">
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a>
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                <i class="fa fa-wrench"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-user">
+                                <li><a href="#">选项 01</a>
+                                </li>
+                                <li><a href="#">选项 02</a>
+                                </li>
+                            </ul>
+                            <a class="close-link">
+                                <i class="fa fa-times"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <h3>
+                                请点击选择时间范围
+                            </h3>
+
+                        <div class="input-group clockpicker" data-autoclose="true">
+                            <input type="text" class="form-control" value="09:30" name="start">
+                            <span class="input-group-addon">
+                                    <span class="fa fa-clock-o"></span>
+                            </span>
+                        </div>
+						 <span class="input-group-addon">到</span>
+						        <div class="input-group clockpicker" data-autoclose="true">
+                            <input type="text" class="form-control" value="12:30" name="start">
+                            <span class="input-group-addon">
+                                    <span class="fa fa-clock-o"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="display:none">
+            <div class="col-sm-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title  back-change">
+                        <div class="ibox-tools">
+                        </div>
+                    </div>
+                </div>   
+            </div>
+        </div>
+                        </div>
+		<div id="tab-3" class="tab-pane">
+                  <div class="row">
+            <div class="col-sm-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>区域列表</h5>
+                        <div class="ibox-tools">
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a>
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="form_advanced.html#">
+                                <i class="fa fa-wrench"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-user">
+                                <li><a href="form_advanced.html#">选项1</a>
+                                </li>
+                                <li><a href="form_advanced.html#">选项2</a>
+                                </li>
+                            </ul>
+                            <a class="close-link">
+                                <i class="fa fa-times"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                            <h3>
+                                请下拉选择区域
+                            </h3>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <select data-placeholder="选择区域..."  style="width:350px;" tabindex="2">
+                                    <option value="">请选择区域</option>
+									<option value="180000" hassubinfo="true">全览</option>
+                                    <option value="100000" hassubinfo="true">接机口</option>file:///C:/Users/Administrator/Desktop/%E5%89%8D%E7%AB%AF%E8%B5%84%E6%96%99/%E8%B6%85%E7%82%ABHTML5/hplus/index.html?v=4.0
+									<option value="110000" hassubinfo="true">候机室</option>
+                                    <option value="120000" hassubinfo="true">行李岛</option>
+                                    <option value="130000" hassubinfo="true">卫生间</option>
+                                    <option value="140000" hassubinfo="true">登机口</option>
+                                    <option value="150000" hassubinfo="true">南航贵宾室</option>
+                                    <option value="210000" hassubinfo="true">深航贵宾室</option>
+                                    <option value="220000" hassubinfo="true">国内到港指廊</option>                                 
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+	    </div>
+        </div>
+
+
+                </div>
+
+				 
+            </div>
+			<div class="col-sm-3" id="div1">
+			<a id="searchtraces" class="btn btn-primary btn-rounded btn-block" href="javascript:void(0);" style="margin:100px 0" ><i class="fa fa-info-circle"></i>搜索历史轨迹</a>
+			</div>
+        </div>   
+    </div>
+					
+				<div id='map'></div>
+				<input type="hidden" id="hiddentrace" name="trace" value="value" > 
+<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoiZGVlcHNlZSIsImEiOiJjaW1jc28yNjQwMDI0dmNtNjRrcWtzNWFsIn0.avkdpYLqN8gnFRkSkJRkOg';
+var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/deepsee/cin5so0ea001laanmdyvtrner',
+    center: [113.808456,22.624482],
+	pitch: 60, // pitch in degrees
+   bearing: -60, // bearing in degrees
+    zoom: 17
+});
+map.addControl(new mapboxgl.Navigation());
+
+var coordinates={'coor1':[	
+[113.81429238119546,22.6251246804637],[113.8144581661893,22.625211533285082],[113.81445368551385,22.62539764628903],[113.81445368551385,22.625604438219966],[113.81445368551385,22.62585672395457],[113.8147090840177,22.62588153891984],[113.81497344387293,22.625918761359372],[113.81491519509115,22.6260262927946],[113.81465531591158,22.626051107729268],[113.81435959132813,22.626088330122883],[113.81435062997701,22.626204133060725],[113.81448056956691,22.626406787967483],[113.81435959132813,22.626588763547232],[113.8145343376728,22.626741788280185],[113.8146642772627,22.62689481284211],[113.81471327590094,22.62698420095566],[113.81465878142302,22.627171858482996],[113.8146629733061,22.627249242955756],[113.81497526858232,22.627516219052552]				 
+                ],'coor2': [	
+[113.80755580451637,22.62410663985527],[113.8075708605133,22.624451758550904],[113.80755791197316,22.624519189321518],[113.80751800279023,22.624589614889487],[113.80771989630404,22.624614534697244],[113.80784784044943,22.62478788975625],[113.8081013811414,22.624788973224796],[113.80851807996362,22.624839896231492],[113.80828558493488,22.624760166932802],[113.80846123823238,22.624767115606872],[113.80885771281771,22.624859764561123],[113.80940976603796,22.624820388763197],[113.80987650189411,22.6247393209308],[113.81103330432387,22.624669834160088],[113.81160041354104,22.62478796164936],[113.81245828186428,22.62483660236623],[113.81314583903173,22.624864397055873],[113.81336164165413,22.6246397232418],[113.81400904952136,22.624579501332263],[113.8142173241456,22.624324716038743],[113.81456612137828,22.624438211380408],[113.81502031061848,22.624542441698665]			 
+                ],'coor3':[
+[113.81575136222807,22.624559448307437],[113.8152900222774,22.624465367848074],[113.81511299648241,22.624262351901095],[113.81487159767107,22.62419302931383],[113.81503789462994,22.624039529175008],[113.81496279277769,22.623905835366003],[113.81504862346605,22.62382165771578],[113.81487159767107,22.623673108795685],[113.8149466995236,22.62355426954403],[113.81493060626951,22.623376010473976],[113.81501107253996,22.623257170965516],[113.81506471672014,22.62315813796326],[113.81475358047453,22.623069008200332],[113.81439952888456,22.623054153234207],[113.81439952888456,22.623668157162314],[113.81436734237639,22.62401477107197],[113.81425468959776,22.624118755074463]
+],'coor4':[
+[113.80533679984632,22.625217614152234],[113.80549929437609,22.625051668652503],[113.80563585892764,22.624930400660602],[113.80573093551442,22.624853810294766],[113.80591071669619,22.624820301996266],[113.80617693113862,22.624810728195214],[113.80631522435533,22.62481551509582],[113.80641030094188,22.624885722952428],[113.80691852851368,22.62487136225741],[113.8073939114463,22.624857001560898],[113.80750800335022,22.624789984957346],[113.80806981954345,22.624786793689637],[113.80834467733263,22.62481072819388],[113.80846914122782,22.624734137761564],
+],
+'coor5':[
+[113.80939641793253,22.627613712455926],[113.80913155437224,22.627020696136483],[113.80901888173054,22.626874533752925],[113.80908587627425,22.62666372234888],[113.80902801735027,22.626160584491174],[113.80904324338292,22.6258682577394],[113.80904324338292,22.625584362894983],[113.80904815728627,22.625537196292868],[113.80906919771184,22.625357031963574],[113.80900046736758,22.625318582951877]
+],
+'coor6':[[113.80844795827136,22.627367353118544],[113.80856087824833,22.627272389672157],[113.80874155021121,22.627216801282728],[113.80878169953326,22.626795699400077],[113.80883640089411,22.625628529631328],[113.8088012702346,22.62549650559096],[113.8085503066755,22.62479480242864],[113.80844993336285,22.62474847793743]],
+'coor7':[[113.80757494383329,22.624514819913273],[113.8077327081919,22.62451143331512],[113.80806658160157,22.624501273520693],[113.80825736640702,22.624501273520693],[113.80856555724694,22.624518206511297],[113.8087490041753,22.624403062133993],[113.80924751099616,22.624484232341885],[113.80945664049455,22.62452148492298],[113.8100693532354,22.62455194270389],[113.81048761223235,22.624585808670574],[113.81099392575481,22.624565489091722],[113.81128010296317,22.62452146332683],[113.8115956316799,22.62452146332683],[113.81183411268694,22.624497757139977]],
+'coor8':[[113.81272471131075,22.62415809876579],[113.81268435298631,22.624415480640124],[113.81274305600334,22.62457126417209],[113.81295952337905,22.624557717784853],[113.81342180963867,22.624557717784853],[113.81360525656703,22.624534011604254],[113.81380337924963,22.624554331187994],[113.81412257690528,22.624506918821538],[113.81427300338657,22.624418867240394],[113.814540835902,22.6242021246468]],
+'coor9':[[113.80562132186037,22.624515749845358],[113.80591687003687,22.624582766582606],[113.80646652387253,22.624601914215802],[113.80764017856171,22.62457320128601],[113.80783724639554,22.624621070367155],[113.8079098503344,22.624763081877177],[113.80803777156012,22.6247854207529],[113.80818470810294,22.624793398922037],[113.80837831860623,22.624804568357888],[113.80846129453636,22.624751912437972]],
+'coor10':[[113.80720730107123,22.625277610960282],[113.8072021150756,22.625098900491707],[113.80821471773254,22.624847132540722],[113.80845327353143,22.624858301972182],[113.80858638075273,22.62487266266858],[113.80885432386026,22.624874258301332],[113.80909115099399,22.624867875769937],[113.81001063952863,22.62470194999119],[113.81035709881172,22.624671632926635],[113.8105057640197,22.624596638052836],[113.81101916633293,22.62457908605508],[113.81165005043573,22.62455831150166],[113.81264835833247,22.624562914840794],[113.81282641084914,22.624649079181694],[113.81291111544436,22.624688970061896]],
+'coor11':[[113.81455063452518,22.621567018153684],[113.81427947504955,22.622113505833767],[113.81432845198549,22.622257351749283],[113.81446380642592,22.62253682338371],[113.81444154418233,22.62282451417869],[113.81449497356687,22.6230669959526],[113.81487343170778,22.623054666381137],[113.81494912333608,22.623239609836233],[113.81492686109254,22.623576617270018],[113.81495802821667,22.623971161516522],[113.81496693311408,22.624246519845798],[113.8149535757679,22.624562975751772],[113.81509160167809,22.62457530518796]],
+'coor12':[[113.81347536278105,22.62316152263992],[113.81385827337078,22.623268378805662],[113.81373360480677,22.62358483696312],[113.81365346072988,22.623810878058293],[113.81358667399888,22.624020479468896],[113.8139206076529,22.6239917106668],[113.81410761049887,22.62404102860981],[113.81414093430294,22.624131384609825],[113.81414509977839,22.624258267403548],[113.81413781020393,22.624406297182517],[113.81421695423683,22.624405335950655],[113.81449916519568,22.624374576529206],[113.81454186131862,22.62421885685248],[113.81474284550723,22.6242025158885],[113.81484802376121,22.62421405068679],[113.81496361570362,22.624238081513468],[113.8150625457447,22.624204438355036]]};
+map.on('load', function () {
+	var coors=$('#hiddentrace').val();
+    alert('coors');
+        for(var coo in coordinates){
+			map.addSource(coo+'L', {
+			"type": "geojson",
+			"data": {
+            "type": "Feature",
+            "properties": {},
+            "geometry": {
+                "type": "LineString",
+                "coordinates":coordinates[coo] 
+            }
+        }
+    });	
+			map.addSource(coo+'P', {
+			"type": "geojson",
+			"data": {
+				"type": "Feature",
+				"properties": {},
+				"geometry": {
+                "type": "MultiPoint",
+                "coordinates": coordinates[coo]		
+
+            }
+        }
+    });
+	};
+		var x=0;
+		var colors=['#00ff33','#ff0099','#ffff00',"#3399ff","#ccffff","#ff33ff","#66ffff","#ccff00","#ff9900","#00cc00","#cc66cc","#cc6666"];
+		$('#div1 a').click(function(){				
+		for(var coo in coordinates){ 
+
+			map.addLayer({
+			"id": coo+'L',
+			"type": "line",
+			"source": coo+'L',
+			"layout": {
+				"line-join": "round",
+				"line-cap": "round"
+			},
+			"paint": {
+				"line-color": colors[x],
+				"line-width": 2
+			}
+		});
+			map.addLayer({
+			"id": coo+'P',
+			"type": "circle",
+			"source": coo+'P',
+			"paint": {
+				"circle-radius": 4,
+				"circle-color": colors[colors.length-x-1],
+				"circle-opacity": 1
+			}
+		});
+		x++;
+		}
+	});
+	
+});
+      
+</script>
+    <script src="js/jquery.min.js?v=2.1.4"></script>
+    <script src="js/bootstrap.min.js?v=3.3.5"></script>
+    <script src="js/content.min.js?v=1.0.0"></script>
+    <script src="js/plugins/chosen/chosen.jquery.js"></script>
+    <script src="js/plugins/jsKnob/jquery.knob.js"></script>
+    <script src="js/plugins/jasny/jasny-bootstrap.min.js"></script>
+    <script src="js/plugins/datapicker/bootstrap-datepicker.js"></script>
+    <script src="js/plugins/prettyfile/bootstrap-prettyfile.js"></script>
+    <script src="js/plugins/nouslider/jquery.nouislider.min.js"></script>
+    <script src="js/plugins/switchery/switchery.js"></script>
+    <script src="js/plugins/ionRangeSlider/ion.rangeSlider.min.js"></script>
+    <script src="js/plugins/iCheck/icheck.min.js"></script>
+    <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="js/plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
+    <script src="js/plugins/clockpicker/clockpicker.js"></script>
+    <script src="js/plugins/cropper/cropper.min.js"></script>
+    <script src="js/demo/form-advanced-demo.min.js"></script>
+    <script type="text/javascript" src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script>
+</body>
+
+</html>

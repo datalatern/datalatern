@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="textml; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+        body, html,#allmap {width: 100%;height: 100%;overflow: hidden;margin:0;font-family:"微软雅黑";}
+    </style>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=Q8H8WxqojpxCgZf7Ss7EBq5vGOb9tmXR"></script>
+    <title>批量转换</title>
+</head>
+<body>
+<div id="allmap"></div>
+</body>
+<ml>
+<script type="text/javascript">
+
+    var points = [new BMap.Point(120.21226,30.24608),
+        new BMap.Point(116.370804,40.0181),
+        new BMap.Point(121.43302,31.076326),
+        new BMap.Point(109.02968,34.34032),
+        new BMap.Point(119.81855,31.417917),
+        new BMap.Point(117.085625,32.65089),
+        new BMap.Point(113.333626,22.579018),
+        new BMap.Point(121.61648,29.919899)
+//        new BMap.Point(112.210236,32.1081),
+//        new BMap.Point(110.3167,25.36721),
+//        new BMap.Point(121.47355,31.330677),
+//        new BMap.Point(123.469986,41.734085),
+//        new BMap.Point(113.63513,34.709137),
+//        new BMap.Point(112.535675,37.83133),
+//        new BMap.Point(119.98898,31.841862),
+//        new BMap.Point(113.502174,22.294977),
+//        new BMap.Point(117.322716,32.873005),
+//        new BMap.Point(91.02502,29.65141),
+//        new BMap.Point(102.673965,25.00413),
+//        new BMap.Point(118.79972,31.986624)
+    ];
+    
+    var bm = new BMap.Map("allmap");
+    bm.centerAndZoom(new BMap.Point(116.378688937,39.9076296510), 15);
+    bm.enableScrollWheelZoom(); 
+    bm.enableContinuousZoom();
+    translateCallback = function (data){
+        if(data.status === 0) {
+            for (var i = 0; i < data.points.length; i++) {
+                bm.addOverlay(new BMap.Marker(data.points[i]));
+                bm.setCenter(data.points[i]);
+            }
+        }
+    }
+    setTimeout(function(){
+        var convertor = new BMap.Convertor();
+        convertor.translate(points, 1, 5, translateCallback)
+    }, 1000);
+</script>
