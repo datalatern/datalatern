@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dashBoard</title>
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/index_homepage.css">
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="js/jquery-1.9.1.min.js"></script>
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/d3.v4.min.js"></script>
+    <script src="js/echarts.min.js"></script>
+</head>
+<body style="overflow-x: hidden" class="gray-bg">
+<div class="row">
+    <div class="col-sm-3">
+        <div class="innerpannel">
+            <h5 class="pannel-default"><a style="color: #E6FFF7;text-decoration:none" href="../staticPages/static/hangyebiaogan.html">行业标杆</a></h5>
+            <h5 class="pannel-default">INDUSTRY</h5>
+            <h5 class="pannel-default">BENCHMARK</h5>
+        </div>
+    </div>
+    <div class="col-sm-6" style="background-color: #FFFFFF">
+        <div class="inner">
+            <div class="innerLine" style="height: 200px;">
+                <p>收益模型</p>
+                <h3>86,432</h3>
+                <h4 class="triangle-up" style="color: #3dbb6d;">6<span style="font-size: 20px">.52%</span></h4>
+            </div>
+            <div id="svgbody"></div>
+        </div>
+    </div>
+
+    <div class="col-sm-3">
+        <div class="innerLine" style="padding: 5px 10px;">
+            <p style="z-index: 99;"><a style="color: inherit;text-decoration:none" href="../staticPages/charts/charts.html">销售预测</a></p>
+            <h4 style="z-index: 99;margin-bottom: 0px;">6,594</h4>
+            <div id="predictLine"></div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-3 topcol">
+        <div class="inner">
+            <div class="innerLine">
+                <p>客户画像</p>
+                <h3>6,594</h3>
+                <h3 class="triangle-up" style="color: #3dbb6d;">3<span style="font-size: 20px">.02%</span></h3>
+            </div>
+            <div id="lineCharts" style="height: 300px;width: 300px;"></div>
+        </div>
+    </div>
+    <div class="col-sm-3 widthInner1">
+
+        <div class="innerLine " style="margin-left: -10px">
+            <p>客户产品投放模型</p>
+            <h3><span style="font-size: 20px;font-weight: bolder;">￥</span>150</h3>
+            <h3 class="triangle-up" style="color: #3dbb6d;">3<span style="font-size: 20px">.02%</span></h3>
+        </div>
+
+    </div>
+    <div class="col-sm-3 widthInner2" style="padding-right: 0px;">
+
+        <div class="innerLine ">
+            <p>监控预警</p>
+            <h3>150</h3>
+            <p>Since Oct 1st</p>
+        </div>
+
+    </div>
+    <div class="col-sm-3 topcol">
+        <div class="inner">
+            <p>Last Month</p>
+            <dl>
+                <dd>用户自定义</dd>
+                <dt><a href="map_interaction.html">动态地图交互图</a></dt>
+                <dt><a href="customize_chart.html">行业销量分析</a></dt>
+                <dt><a href="geoLine/flight_demo.html">运营飞机监控</a></dt>
+                <dd>市场总体</dd>
+                <dt><a href="index_v1.html">动态走势</a></dt>
+                <dd>竞品分析</dd>
+                <dt><a href="index_v1.html">竞争对手产品</a></dt>
+                <dd>行业分析</dd>
+                <dt><a href="index_v1.html">行业政策分析</a></dt>
+                <dd>内部市场分析</dd>
+                <dt><a href="index_v1.html">供应商分布</a></dt>
+               <!-- <dd>第三方数据分析</dd>
+                <dt><a href="index_v1.html">数据分析</a></dt>
+                <dd>同类分析</dd>
+                <dt><a href="index_v1.html">同类分析</a></dt>
+                <dd>市场容易分析</dd>
+                <dt><a href="index_v1.html">市场容易分析</a></dt>-->
+            </dl>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+
+    var lineChartDom = document.getElementById("lineCharts");
+    var lineChart = echarts.init(lineChartDom);
+    var lineChartsOption = {
+        grid: {
+            show: false,
+            backgroundColor: "#fff"
+        },
+
+        xAxis: {
+            type: 'category',
+            show: false,
+            boundaryGap: false,
+            data: ['2016-07-01', '2016-07-02', '2016-07-03', '2016-07-04', '2016-07-05', '2016-07-06', '2016-07-07'],
+            splitLine: {
+                show: false
+            },
+            axisLine: {
+                show: false
+            },
+            axisLabel: {
+                show: false
+            },
+            splitLabel: {
+                show: false
+            },
+            axisTrick: {
+                show: false
+            }
+        },
+        yAxis: {
+            type: 'value',
+            show: false,
+            splitLine: {
+                show: false
+            },
+            axisLine: {
+                show: false
+            },
+            axisLabel: {
+                show: false
+            },
+            splitLabel: {
+                show: false
+            },
+            axisTrick: {
+                show: false
+            }
+        },
+        series: [{
+            name: '八时流量',
+            type: 'line',
+            smooth: true,
+            data: [392, 459, 344, 179, 381, 217, 479,],
+            animation: false,
+            itemStyle: {
+                normal: {
+                    lineStyle: {
+                        color: '#FFC125'
+                    }
+                }
+            },
+
+        }]
+    }
+    lineChart.setOption(lineChartsOption);
+    createPredictLine();
+    var width = 500,
+            height = 400,
+            radius = 80,
+            x = Math.sin(2 * Math.PI / 3),
+            y = Math.cos(2 * Math.PI / 3);
+
+    var offset = 0,
+            speed = 4,
+            start = Date.now();
+
+    var svg = d3.select("body").select("#svgbody").append("svg")
+            .attr("width", width)
+            .attr("height", height)
+            .append("g")
+            .attr("transform", "translate(" + width / 1.7 + "," + height / 3.15 + ")scale(.3)")
+            .append("g");
+
+    var frame = svg.append("g")
+            .datum({radius: Infinity});
+
+    frame.append("g")
+            .attr("class", "annulus")
+            .datum({teeth: 80, radius: -radius * 5, annulus: true})
+            .append("path")
+            .attr("d", gear);
+
+    frame.append("g")
+            .attr("class", "sun")
+            .datum({teeth: 16, radius: radius})
+            .append("path")
+            .attr("d", gear);
+
+    frame.append("g")
+            .attr("class", "planet")
+            .attr("transform", "translate(0,-" + radius * 3 + ")")
+            .datum({teeth: 32, radius: -radius * 2})
+            .append("path")
+            .attr("d", gear);
+
+    frame.append("g")
+            .attr("class", "planet")
+            .attr("transform", "translate(" + -radius * 3 * x + "," + -radius * 3 * y + ")")
+            .datum({teeth: 32, radius: -radius * 2})
+            .append("path")
+            .attr("d", gear);
+
+    frame.append("g")
+            .attr("class", "planet")
+            .attr("transform", "translate(" + radius * 3 * x + "," + -radius * 3 * y + ")")
+            .datum({teeth: 32, radius: -radius * 2})
+            .append("path")
+            .attr("d", gear);
+
+    d3.selectAll("input[name=reference]")
+            .data([radius * 5, Infinity, -radius])
+            .on("change", function (radius1) {
+                var radius0 = frame.datum().radius, angle = (Date.now() - start) * speed;
+                frame.datum({radius: radius1});
+                svg.attr("transform", "rotate(" + (offset += angle / radius0 - angle / radius1) + ")");
+            });
+
+    d3.selectAll("input[name=speed]")
+            .on("change", function () {
+                speed = +this.value;
+            });
+
+    function gear(d) {
+        var n = d.teeth,
+                r2 = Math.abs(d.radius),
+                r0 = r2 - 8,
+                r1 = r2 + 8,
+                r3 = d.annulus ? (r3 = r0, r0 = r1, r1 = r3, r2 + 20) : 20,
+                da = Math.PI / n,
+                a0 = -Math.PI / 2 + (d.annulus ? Math.PI / n : 0),
+                i = -1,
+                path = ["M", r0 * Math.cos(a0), ",", r0 * Math.sin(a0)];
+        while (++i < n) path.push(
+                "A", r0, ",", r0, " 0 0,1 ", r0 * Math.cos(a0 += da), ",", r0 * Math.sin(a0),
+                "L", r2 * Math.cos(a0), ",", r2 * Math.sin(a0),
+                "L", r1 * Math.cos(a0 += da / 3), ",", r1 * Math.sin(a0),
+                "A", r1, ",", r1, " 0 0,1 ", r1 * Math.cos(a0 += da / 3), ",", r1 * Math.sin(a0),
+                "L", r2 * Math.cos(a0 += da / 3), ",", r2 * Math.sin(a0),
+                "L", r0 * Math.cos(a0), ",", r0 * Math.sin(a0));
+        path.push("M0,", -r3, "A", r3, ",", r3, " 0 0,0 0,", r3, "A", r3, ",", r3, " 0 0,0 0,", -r3, "Z");
+        return path.join("");
+    }
+
+    d3.timer(function () {
+        var angle = (Date.now() - start) * speed,
+                transform = function (d) {
+                    return "rotate(" + angle / d.radius + ")";
+                };
+        frame.selectAll("path").attr("transform", transform);
+        frame.attr("transform", transform); // frame of reference
+    });
+
+    function createPredictLine() {
+        var predictdom = document.getElementById("predictLine");
+        var predictCharts = echarts.init(predictdom);
+        var xdata = [];
+        var ydata = [];
+        for (var i = 0; i < 30; i++) {
+            xdata.push(i);
+        }
+        for (var j = 0; j < 30; j++) {
+            ydata.push(Math.random() * 20);
+        }
+        var option = {
+            grid: {
+                left: 0,
+                right: 20,
+                bottom: 20,
+                top: 0
+            },
+            xAxis: {
+                type: 'category',
+                data: xdata,
+                show: false,
+                boundaryGap: false,
+                axisTick: {
+                    show: false
+                },
+                axisLine: {
+                    lineStyle: {
+                        color: '#7588E4'
+                    }
+                },
+                axisLabel: {
+                    margin: 18,
+                    textStyle: {
+                        fontSize: 14
+                    }
+                }
+            },
+            yAxis: {
+                type: 'value',
+                show: false,
+                splitLine: {
+                    lineStyle: {
+                        color: ['#D4DFF5']
+                    }
+                },
+                axisTick: {
+                    show: false
+                },
+                axisLine: {
+                    lineStyle: {
+                        color: '#7588E4'
+                    }
+                },
+                axisLabel: {
+                    margin: 27,
+                    textStyle: {
+                        fontSize: 16
+                    }
+                }
+            },
+            series: [
+                {
+                    name: '数量',
+                    type: 'line',
+                    smooth: true,
+                    showSymbol: false,
+                    symbol: 'circle',
+                    symbolSize: 15,
+                    data: ydata,
+                    areaStyle: {
+                        normal: {
+                            color: "#9ecae1"
+                        }
+                    },
+                    itemStyle: {
+                        normal: {
+                            color: '#ffd178'
+                        }
+                    },
+                    lineStyle: {
+                        normal: {
+                            width: 3,
+                            color: "#6baed6"
+                        }
+                    }
+                }
+            ]
+        }
+        predictCharts.setOption(option);
+    }
+</script>
+</html>

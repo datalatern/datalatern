@@ -1,0 +1,145 @@
+@charset "utf-8";
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,blockquote,th,td,p,a,span{margin:0;padding:0;font-family:微软雅黑,Tohoma;}
+input,button,select,textarea{outline:none;}textarea{resize:none;overflow:auto;}li{list-style:none;}img{border:none;}i,em{font-style:normal;}
+html{overflow-y:scroll;}body{background:#fff;}
+body,input,textarea{font-size:12px;font-family:微软雅黑,"Microsoft YaHei"}
+a{color:#070707;text-decoration:none;outline:none;}
+input{border:1px solid #d4d8e3;padding:0 3px;color:#666;box-shadow:none;}
+textarea{border:1px solid #d4d8e3;padding:0 3px;line-height:22px;color:#666;box-shadow:none;} 
+select{border:1px solid #d4d8e3;height:22px;line-height:22px;color:#666;}
+table{border-collapse:inherit;cellpadding:0;cellspacing:0;}
+.clear:after,.main:after,.rightBox:after,.member_info_edit li:after,.clearLi li:after{content:".";display:block;height:0;line-height:0;clear:both;visibility:hidden;}
+.clear,.member_info_edit li{*zoom:1;clear: both;}
+.clear_new{*zoom:1;}
+/*整体背景*/
+.body{position:absolute; width:100%; height:100%; z-index:-1;min-width:1280px;}
+.icon-pager{display:block;width:11px;height:11px;background-position:0 -5px;}
+.rslides_here .icon-pager{background-position:-12px -5px;}
+#slider-pager li{margin-right:5px;}
+.slider-pager{height:30px;}
+.bgf{background: url(../images/bgf.png) 0 0 repeat;}
+.require {color: red;}
+/*基本页面结构*/
+.fl{float:left;*display:inline;}
+.fr{float:right;*display:inline;}
+.fb{font-weight: bold;}
+.listLf li{float:left;*display:inline;}
+.pr{position: relative;}
+.center{text-align:center;}
+.cangwei_info_hide{display: none;}
+.text-right{text-align: right;}
+.hide{display: none;}
+.vam{vertical-align: middle;}
+.colortip{color: #e04736;}
+.hr{height: 1px;background-color: #dfdfdf;margin: 10px 0;}
+.bbd{border-bottom: 1px dashed #c1c1c1;}
+.colordb{color: #db2532;}
+.color61{color: #6173fd;}
+
+.color85{color: #85b500;}
+.color00{color: #009dcd;}
+.coloree{color: #ee7d15;}
+.color72{color: #7281ac}
+.color44{color: #444;}
+.ti2em{text-indent: 2em;}
+.fs12{font-size: 12px;}
+.fs14{font-size: 14px;}
+.fs15{font-size:15px;}
+.fs16{font-size: 16px;}
+.fs24{font-size: 24px;}
+.zIndex1{z-index:1;}
+.zIndex2{z-index:2;}
+.zIndex5{z-index:5;}
+.zIndex10{z-index:10;}
+/* margin & padding */
+.mt_10{margin-top: -10px;}
+
+.mt5{margin-top:5px;}
+.mt7{margin-top:7px;}
+.mt10{margin-top:10px;}
+.mt15{margin-top:15px;}
+.mt20{margin-top:20px;}
+.mt25{margin-top:25px;}
+.mt30{margin-top:30px;}
+.mt40{margin-top: 40px;}
+.mt80{margin-top: 80px;}
+
+.mb5{margin-bottom:5px;}
+.mb10{margin-bottom:10px;}
+.mb15{margin-bottom:15px;}
+.mb16{margin-bottom: 16px;}
+.mb20{margin-bottom:20px;}
+.mb25{margin-bottom:25px;}
+.mb30{margin-bottom:30px;}
+
+.ml5{margin-left:5px;}
+.ml10{margin-left:10px;}
+.ml15{margin-left:15px;}
+.ml20{margin-left:20px;}
+.ml25{margin-left:25px;}
+.ml30{margin-left:30px;}
+.ml35{margin-left: 35px;}
+.ml60{margin-left: 60px}
+.ml80{margin-left: 80px;}
+.ml125{margin-left: 125px;}
+.ml335{margin-left: 335px;}
+.ml507{margin-left: 507px;}
+.ml676{margin-left: 676px;}
+.ml778{margin-left: 778px;}
+
+.mr5{margin-right:5px;}
+.mr10{margin-right:10px;}
+.mr15{margin-right:15px;}
+.mr20{margin-right:20px;}
+.mr25{margin-right:25px;}
+.mr30{margin-right:30px;}
+.mr31{margin-right: 31px;}
+.mr35{margin-right: 35px;}
+.mr50{margin-right:50px;}
+.mr60{margin-right: 60px;}
+.mr80{margin-right: 80px;}
+.mr170{margin-right: 170px;}
+.mr340{margin-right: 340px;}
+
+.pt10{padding-top: 10px;}
+.pt15{padding-top: 15px;}
+.pt60{padding-top: 60px;}
+
+.pb15{padding-bottom: 15px;}
+.pb40{padding-bottom: 40px;}
+
+.p1{padding:1px;}
+.p2{padding:2px;}
+.p3{padding:3px;}
+.p5{padding:5px;}
+.p10{padding:10px;}
+
+.pb30{padding-bottom: 30px;}
+.pb50{padding-bottom:50px;}
+.pb60{padding-bottom:60px;}
+/*布局*/
+.main03{width: 1200px;margin: 0 auto;}
+
+/*icon*/
+.icon03{display: inline-block;background: url(../images/icon03.png) 0 0 no-repeat;}
+
+.icon03-radio{width: 12px;height: 12px;overflow: hidden;}
+.active .icon03-radio{background-position: -15px 0;}
+
+/*footer*/
+.footer03{border-top: 2px solid #df282d;padding-top: 40px;}
+
+.banquan{line-height: 30px;text-align: center;border-top: 1px solid #acacac;padding-top: 20px;margin-top: 30px;}
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="googlebot" content="noindex, nofollow">
+    <script type="text/javascript" src="js/browser-5.8.24.js"></script>
+    <script type="text/javascript" src="js/react-with-addons.min.js"></script>
+    <script type="text/javascript" src="js/react-dom.min.js"></script>
+    <script type="text/javascript" src="js/react-dom-server.min.js"></script>
+    <script type="text/javascript" src="js/Recharts.min.js"></script>
+    <link rel="stylesheet" href="css/main.css">
+
+    <title>SimpleBarChart</title>
+    <script type="application/javascript;version=1.7" language="JavaScript 1.7">//<![CDATA[
+        const {ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, Legend} = Recharts;
+        const data = [{x: 100, y: 200, z: 200}, {x: 120, y: 100, z: 260},
+                          {x: 170, y: 300, z: 400}, {x: 140, y: 250, z: 280},
+                          {x: 150, y: 400, z: 500}, {x: 110, y: 280, z: 200}]
+
+        const SimpleScatterChart = React.createClass({
+            render () {
+            return (
+                <ScatterChart width={400} height={400} margin={{top: 20, right: 20, bottom: 20, left: 20}}>
+                <XAxis dataKey={'x'} name='stature' unit='cm'/>
+                <YAxis dataKey={'y'} name='weight' unit='kg'/>
+                <Scatter name='A school' data={data} fill='#8884d8'/>
+                <CartesianGrid />
+                <Tooltip cursor={{strokeDasharray: '3 3'}}/>
+              </ScatterChart>
+            );
+          }
+        })
+
+        ReactDOM.render(
+          <SimpleScatterChart />,
+          document.getElementById('container')
+        );
+
+        //]]> 
+    </script>
+    <script src="js/jsfiddle-integration-babel.js"></script>
+</head>
+
+<body>
+<div id="container">
+    <!-- This element's contents will be replaced with your component. -->
+</div>
+</body>
+</html>

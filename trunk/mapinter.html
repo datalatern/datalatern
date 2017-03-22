@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H+ 后台主题UI框架 - 写信</title>
+    <meta name="keywords" content="H+后台主题,后台bootstrap框架,会员中心主题,后台HTML,响应式后台">
+    <meta name="description" content="H+是一个完全响应式，基于Bootstrap3最新版本开发的扁平化主题，她采用了主流的左右两栏式布局，使用了Html5+CSS3等现代技术">
+
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+    <link href="css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="css/plugins/summernote/summernote.css" rel="stylesheet">
+    <link href="css/plugins/summernote/summernote-bs3.css" rel="stylesheet">
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link href="css/jquery-ui.min.css" rel="stylesheet">
+    <link href="css/style.min.css?v=4.0.0" rel="stylesheet">
+    <base target="_blank">
+    <link href="css/layer.css" rel="stylesheet">
+    <style>
+        .productType {
+            background-color: #FFF;
+            background-image: none;
+            border: 1px solid #e5e6e7;
+            border-radius: 1px;
+            color: inherit;
+            display: block;
+            padding: 6px 12px;
+            -webkit-transition: border-color .15s ease-in-out 0s, box-shadow .15s ease-in-out 0s;
+            transition: border-color .15s ease-in-out 0s, box-shadow .15s ease-in-out 0s;
+            width: 100%;
+            font-size: 14px;
+            display: none;
+        }
+
+        .text-legend:hover {
+            color: #63B8FF;
+        }
+
+        .editlenged {
+            display: block;
+            text-align: center;
+            font-size: 12px;
+            margin-top: 2px;
+            color: #63B8FF;
+            visibility: hidden;
+        }
+
+        #ui-id-1 {
+            z-index: 198910141 !important;
+        }
+
+        ::-webkit-input-placeholder {
+            font-size: 12px;
+        }
+
+        ::-moz-placeholder {
+            font-size: 12px;
+        }
+
+        :-ms-input-placeholder {
+            font-size: 12px;
+        }
+
+        input {
+            word-wrap: break-word;
+            word-break: normal;
+        }
+    </style>
+
+</head>
+
+<body class="gray-bg">
+<div class="wrapper wrapper-content">
+    <div class="row">
+        <div class="col-sm-12 animated fadeInRight" style="">
+            <div style="display: inline;position: relative">
+                <h2 class="page-heading"
+                    style="padding: 0;font-weight: bold;border: 0;display: inline;top: 0px;position: fixed;z-index: 999;left: 20px;">
+                    Built Your Own Data Map</h2>
+                <div style="padding: 0px 10px 0px 20px;font-weight: bold;border: 0;overflow:scroll;display: inline;top: 0px;position: fixed;z-index: 999;left: 20px;top: 60px;background-color: #f3f3f4;height: 620px;max-height: 620px;">
+                    <h2 style="font-weight: 400">地图编辑</h2>
+                    <ul class="folder-list m-b-md" style="padding: 0">
+                        <li>
+                            <a href="javascript:void(0);"> <i class="fa fa-file-text "></i> 主标题</a>
+                            <input type="text" id="mainTitle" class="form-control" onkeypress=' '
+                                   placeholder="请输入主标题并回车">
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);"> <i class="fa fa-file-text-o"></i> 副标题</a>
+                            <input type="text" id="subTitle" class="form-control" placeholder="请输入副标题并回车">
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);"> <i class="fa fa-location-arrow"></i> 区域</a>
+                            <input type="text" class="form-control" id="locateArea" placeholder="请输入定位城市并回车">
+                        </li>
+                        <li id="addTipDiv" style="display: none">
+                            <a href="javascript:void(0);"> <i class="fa fa-pencil"></i> 属性</a>
+                            <input type="text" class="form-control" id="tipsForArea" placeholder="为城市增加标签并回车">
+                        </li>
+                    </ul>
+                    <h2 style="font-weight: 400">关键数据说明</h2>
+                    <button type="button"
+                            style="margin-top: 0;padding: 2px 6px 3px;background-color: #ADD8E6;border-color: #ADD8E6;"
+                            id="addItem" class="btn btn-default pull-right"><i class="fa fa-plus"></i> Add item
+                    </button>
+                    <ul class="category-list" style="padding: 0;width: 198px;padding-top: 23px;" id="productTypeList">
+                        <!--<li style="padding: 6px;">-->
+                        <!--<a href="javascript:void(0);" flag="true"> <i class="fa fa-circle text-navy"></i> 点击修改</a>-->
+                        <!--<textarea autofocus class="txtarea" style="width: 100%;height: 100%;min-height: 60px;display: block;border: lightskyblue;/*background-color: #FAFAD2*/"></textarea>-->
+                        <!--</li>-->
+                    </ul>
+                </div>
+                <div class="dropdown profile-element"
+                     style="left: 78.0250814332248%;top: 34px;z-index: 999;position: fixed">
+                    <a data-toggle="dropdown" class="dropdown-toggle" id="sendEmail" href="#">
+                        <i class="fa fa-envelope-o text-legend"></i><br>
+                        <p class="editlenged" style="margin-left: -5px;">发送</p>
+                    </a>
+                    <!--<ul class="dropdown-menu animated fadeInRight m-t-xs">-->
+                    <!--<li><a class="J_menuItem" href="form_avatar.html"></a>-->
+                    <!--</li>-->
+                    <!--<li><a class="J_menuItem" href="profile.html">个人资料</a>-->
+                    <!--</li>-->
+                    <!--<li><a class="J_menuItem" href="contacts.html">联系我们</a>-->
+                    <!--</li>-->
+                    <!--<li><a class="J_menuItem" href="mailbox.html">信箱</a>-->
+                    <!--</li>-->
+                    <!--<li class="divider"></li>-->
+                    <!--<li><a href="login.html">安全退出</a>-->
+                    <!--</li>-->
+                    <!--</ul>-->
+                </div>
+                <div class="dropdown profile-element"
+                     style="left: 80.214983713355%;top: 27px;z-index: 999;position: fixed;width: 250px;">
+                    <!--<a data-toggle="dropdown" class="dropdown-toggle" href="#" id="editmap">-->
+                    <!--<i class="fa fa-pencil text-legend"></i><br>-->
+                    <!--<p class="editlenged" style="margin-left: -5px;">编辑</p>-->
+                    <!--</a>-->
+                    <div class="row head">
+                        <div class="col-lg-12">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="locateCity" placeholder="请输入定位城市">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-info" type="button" id="btnlocateArea"><span
+                                            class="glyphicon glyphicon-search"></span></button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mail-box" style="border: 0">
+                <div class="mail-body" id="mapDiv" style="height: 700px;">
+
+                </div>
+            </div>
+        </div>
+        <!--<div class="col-sm-0">-->
+        <!--<div class="ibox float-e-margins">-->
+        <!--<div class="ibox-content mailbox-content">-->
+        <!--<div class="file-manager">-->
+        <!--<h5>地图编辑</h5>-->
+        <!--&lt;!&ndash;<ul class="folder-list m-b-md" style="padding: 0">&ndash;&gt;-->
+        <!--&lt;!&ndash;<li>&ndash;&gt;-->
+        <!--&lt;!&ndash;<a href="javascript:void(0);"> <i class="fa fa-file-text "></i> 主标题</a>&ndash;&gt;-->
+        <!--&lt;!&ndash;<input type="text" id="mainTitle" class="form-control" placeholder="请输入主标题">&ndash;&gt;-->
+        <!--&lt;!&ndash;</li>&ndash;&gt;-->
+        <!--&lt;!&ndash;<li>&ndash;&gt;-->
+        <!--&lt;!&ndash;<a href="javascript:void(0);"> <i class="fa fa-file-text-o"></i> 副标题</a>&ndash;&gt;-->
+        <!--&lt;!&ndash;<input type="text" id="subTitle" class="form-control" placeholder="请输入副标题">&ndash;&gt;-->
+        <!--&lt;!&ndash;</li>&ndash;&gt;-->
+        <!--&lt;!&ndash;<li>&ndash;&gt;-->
+        <!--&lt;!&ndash;<a href="javascript:void(0);"> <i class="fa fa-location-arrow"></i> 区域</a>&ndash;&gt;-->
+        <!--&lt;!&ndash;<input type="text" class="form-control" id="locateArea" placeholder="请输入定位城市">&ndash;&gt;-->
+        <!--&lt;!&ndash;</li>&ndash;&gt;-->
+        <!--&lt;!&ndash;<li id="addTipDiv" style="display: none">&ndash;&gt;-->
+        <!--&lt;!&ndash;<a href="javascript:void(0);"> <i class="fa fa-pencil"></i> 属性</a>&ndash;&gt;-->
+        <!--&lt;!&ndash;<input type="text" class="form-control" id="tipsForArea" placeholder="为城市增加标签">&ndash;&gt;-->
+        <!--&lt;!&ndash;</li>&ndash;&gt;-->
+        <!--&lt;!&ndash;</ul>&ndash;&gt;-->
+        <!--&lt;!&ndash;<h5>关键数据说明</h5><button type="button" class="btn btn-default pull-right"><i class="fa fa-plus"></i> Add item</button>&ndash;&gt;-->
+        <!--&lt;!&ndash;<ul class="category-list" style="padding: 0" id="productTypeList" >&ndash;&gt;-->
+        <!--&lt;!&ndash;<li>&ndash;&gt;-->
+        <!--&lt;!&ndash;<a href="javascript:void(0);" flag="true"> <i class="fa fa-circle text-navy"></i> 工作</a>&ndash;&gt;-->
+        <!--&lt;!&ndash;<input type="text" id="productType1" class="productType" placeholder="请输入产品类型">&ndash;&gt;-->
+        <!--&lt;!&ndash;</li>&ndash;&gt;-->
+        <!--&lt;!&ndash;<li>&ndash;&gt;-->
+        <!--&lt;!&ndash;<a href="javascript:void(0);" flag="true"> <i class="fa fa-circle text-danger"></i> 文档</a>&ndash;&gt;-->
+        <!--&lt;!&ndash;<input type="text" id="productType2" class="productType" placeholder="请输入产品类型">&ndash;&gt;-->
+        <!--&lt;!&ndash;</li>&ndash;&gt;-->
+        <!--&lt;!&ndash;<li>&ndash;&gt;-->
+        <!--&lt;!&ndash;<a href="javascript:void(0);" flag="true"><i class="fa fa-circle text-primary"></i> 社交</a>&ndash;&gt;-->
+        <!--&lt;!&ndash;<input type="text" id="productType3" class="productType" placeholder="请输入产品类型">&ndash;&gt;-->
+        <!--&lt;!&ndash;</li>&ndash;&gt;-->
+        <!--&lt;!&ndash;<li>&ndash;&gt;-->
+        <!--&lt;!&ndash;<a href="javascript:void(0);" flag="true"> <i class="fa fa-circle text-info"></i> 广告</a>&ndash;&gt;-->
+        <!--&lt;!&ndash;<input type="text" id="productType4" class="productType" placeholder="请输入产品类型">&ndash;&gt;-->
+        <!--&lt;!&ndash;</li>&ndash;&gt;-->
+        <!--&lt;!&ndash;<li>&ndash;&gt;-->
+        <!--&lt;!&ndash;<a href="javascript:void(0);" flag="true"> <i class="fa fa-circle text-warning"></i> 客户端</a>&ndash;&gt;-->
+        <!--&lt;!&ndash;<input type="text" id="productType5" class="productType" placeholder="请输入产品类型">&ndash;&gt;-->
+        <!--&lt;!&ndash;</li>&ndash;&gt;-->
+        <!--&lt;!&ndash;</ul>&ndash;&gt;-->
+
+        <!--&lt;!&ndash;<h5 style="padding: 5px 0 0 0;">分享至邮箱</h5>&ndash;&gt;-->
+        <!--&lt;!&ndash;<ul class="category-list" style="padding: 0px 0 5px 0">&ndash;&gt;-->
+        <!--&lt;!&ndash;<li>&ndash;&gt;-->
+        <!--&lt;!&ndash;<a href="javascript:void(0);" flag="true" style="display: inline-block" > <i class="fa fa-at text-primary"></i> 分享至</a>&ndash;&gt;-->
+        <!--&lt;!&ndash;<a href="javascript:void(0);" style="float: right;display: inline-block" id=""> <i class="fa fa-envelope-o text-danger"></i> 发送</a>&ndash;&gt;-->
+        <!--&lt;!&ndash;<input type="text" id="mailAddress" class="form-control" placeholder="请输入对方邮箱">&ndash;&gt;-->
+        <!--&lt;!&ndash;</li>&ndash;&gt;-->
+        <!--&lt;!&ndash;<li>&ndash;&gt;-->
+        <!--&lt;!&ndash;<a href="javascript:void(0);" flag="true"> <i class="fa  fa-pencil text-warning"></i> 主题</a>&ndash;&gt;-->
+        <!--&lt;!&ndash;<input type="text" id="emailSubject" class="form-control" placeholder="请输入主题">&ndash;&gt;-->
+        <!--&lt;!&ndash;</li>&ndash;&gt;-->
+        <!--&lt;!&ndash;<li>&ndash;&gt;-->
+        <!--&lt;!&ndash;<a href="javascript:void(0);" flag="true"> <i class="fa  fa-pencil-square-o text-navy"></i> 说些什么吧</a>&ndash;&gt;-->
+        <!--&lt;!&ndash;<input type="text" id="saySth" class="form-control" placeholder="说些什么吧">&ndash;&gt;-->
+        <!--&lt;!&ndash;</li>&ndash;&gt;-->
+        <!--&lt;!&ndash;</ul>&ndash;&gt;-->
+        <!--&lt;!&ndash;   <div style="padding: 30px;">-->
+        <!--<h5>地图编辑</h5>-->
+        <!--<ul class="folder-list m-b-md" style="padding: 0">-->
+        <!--<li>-->
+        <!--<a href="javascript:void(0);"> <i class="fa fa-file-text "></i> 主标题</a>-->
+        <!--<input type="text" id="mainTitle" class="form-control" onkeypress=' ' placeholder="请输入主标题">-->
+        <!--</li>-->
+        <!--<li>-->
+        <!--<a href="javascript:void(0);"> <i class="fa fa-file-text-o"></i> 副标题</a>-->
+        <!--<input type="text" id="subTitle" class="form-control" placeholder="请输入副标题">-->
+        <!--</li>-->
+        <!--<li>-->
+        <!--<a href="javascript:void(0);"> <i class="fa fa-location-arrow"></i> 区域</a>-->
+        <!--<input type="text" class="form-control" id="locateArea" placeholder="请输入定位城市">-->
+        <!--</li>-->
+        <!--<li id="addTipDiv" style="display: none">-->
+        <!--<a href="javascript:void(0);"> <i class="fa fa-pencil"></i> 属性</a>-->
+        <!--<input type="text" class="form-control" id="tipsForArea" placeholder="为城市增加标签">-->
+        <!--</li>-->
+        <!--</ul>-->
+        <!--</div>&ndash;&gt;-->
+
+        <!--&lt;!&ndash;<h5 class="tag-title">标签</h5>&ndash;&gt;-->
+        <!--&lt;!&ndash;<ul class="tag-list" style="padding: 0">&ndash;&gt;-->
+        <!--&lt;!&ndash;<li><a href="javascript:void (0);"><i class="fa fa-tag"></i> 数据</a>&ndash;&gt;-->
+        <!--&lt;!&ndash;</li>&ndash;&gt;-->
+        <!--&lt;!&ndash;<li><a href="javascript:void (0);"><i class="fa fa-tag"></i> 展示</a>&ndash;&gt;-->
+        <!--&lt;!&ndash;</li>&ndash;&gt;-->
+        <!--&lt;!&ndash;<li><a href="javascript:void (0);"><i class="fa fa-tag"></i> 个性</a>&ndash;&gt;-->
+        <!--&lt;!&ndash;</li>&ndash;&gt;-->
+        <!--&lt;!&ndash;<li><a href="javascript:void (0);"><i class="fa fa-tag"></i> 收益</a>&ndash;&gt;-->
+        <!--&lt;!&ndash;</li>&ndash;&gt;-->
+        <!--&lt;!&ndash;<li><a href="javascript:void (0);"><i class="fa fa-tag"></i> 可视</a>&ndash;&gt;-->
+        <!--&lt;!&ndash;</li>&ndash;&gt;-->
+        <!--&lt;!&ndash;<li><a href="javascript:void (0);"><i class="fa fa-tag"></i> 创新</a>&ndash;&gt;-->
+        <!--&lt;!&ndash;</li>&ndash;&gt;-->
+        <!--&lt;!&ndash;<li><a href="javascript:void (0);"><i class="fa fa-tag"></i> 市场</a>&ndash;&gt;-->
+        <!--&lt;!&ndash;</li>&ndash;&gt;-->
+        <!--&lt;!&ndash;<li><a href="javascript:void (0);"><i class="fa fa-tag"></i> 交互</a>&ndash;&gt;-->
+        <!--&lt;!&ndash;</li>&ndash;&gt;-->
+        <!--&lt;!&ndash;</ul>&ndash;&gt;-->
+        <!--&lt;!&ndash;<div class="clearfix"></div>&ndash;&gt;-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--</div>-->
+        <h2 class="page-heading" style="padding: 0;font-weight: bold" id="s00001">编辑数据观点</h2>
+        <div class="mail-box">
+            <div class="mail-text " style="min-height: 100px;">
+                <div class="summernote">
+                    <div id="showNotes"
+                         style="width: 100%;height: 100%;min-height: 100px;display: block;border: lightskyblue">
+                        说明该图适用范围， 点击即可自定义添加进去想要表达的数据观点
+                    </div>
+                    <textarea id="editNotes"
+                              style="width: 100%;height: 100%;min-height: 100px;display: none;border: lightskyblue;background-color: #FAFAD2"></textarea>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="mail-body text-right tooltip-demo" style="padding: 5px 10px;">
+                <a id="saveEditNotes" href="javascript:void (0);" class="btn btn-sm btn-primary" data-toggle="tooltip"
+                   data-placement="top" title="Save"><i class="fa fa-save"></i> 保存</a>
+                <a id="quitEditNotes" href="javascript:void (0);" class="btn btn-white btn-sm" data-toggle="tooltip"
+                   data-placement="top" title="Quit"><i class="fa fa-times"></i> 放弃</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/jquery.min.js?v=2.1.4"></script>
+<script src="js/bootstrap.min.js?v=3.3.5"></script>
+<script type="text/javascript" src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script>
+<script src="js/jquery-ui.min.js"></script>
+<script src="js/echarts.min.js"></script>
+<script src="js/china.js"></script>
+<script src="js/zeroModal.min.js"></script>
+<script src="js/layer.js"></script>
+<script>
+    var mainTitle = $("#mainTitle").val();
+    var subTitle = $("#subTitle").val();
+    var data;
+    var geoCoordMap;
+    var availableTags = [];
+    $(function () {
+        $.getJSON("js/mapInteraction.json", function (resp) {
+            data = resp.datas;
+
+            data.map(function (v, i) {
+                availableTags.push(v.name);
+            });
+            geoCoordMap = resp.geoCoordMaps;
+            init();
+        }, true);
+        $("#productTypeList a").on("click", function (evt) {
+            console.log(evt.target);
+            if ($(evt.target).attr("flag") === "true") {
+                $(evt.target).next().css("display", "block");
+                $(evt.target).attr("flag", "false");
+            } else {
+                $(evt.target).next().css("display", "none");
+                $(evt.target).attr("flag", "true");
+            }
+        });
+        $(".productType").keydown(function (evt) {
+            if (evt.keyCode === 13) {
+                if (!!$(this).val()) {
+                    var originInnerHTML = $(evt.target).prev()[0].innerHTML.substring(0, $(evt.target).prev()[0].innerHTML.lastIndexOf(">") + 1);
+                    $(evt.target).prev().html(originInnerHTML + " " + $(this).val());
+                }
+                $(evt.target).css("display", "none");
+            }
+        });
+        //地图编辑
+        $("#locateArea").autocomplete({
+            source: availableTags
+        });
+        $("#locateCity").autocomplete({
+            source: availableTags
+        });
+        $("#mainTitle").keydown(function (event) {
+            if (event.keyCode === 13) {
+                var mainTitle = $("#mainTitle").val();
+                var subTitle = $("#subTitle").val();
+                if (mainTitle) {
+                    createMap(mainTitle, subTitle);
+                } else {
+                    alert("请输入标题");
+                }
+            }
+        });
+        $("#subTitle").keydown(function (event) {
+            if (event.keyCode === 13) {
+                var mainTitle = $("#mainTitle").val();
+                var subTitle = $("#subTitle").val();
+                if (subTitle) {
+                    createMap(mainTitle, subTitle);
+                } else {
+                    alert("请输入标题");
+                }
+
+            }
+        });
+        $("#locateArea").keydown(function (event) {
+            if (event.keyCode === 13) {
+                var locateData = $("#locateArea").val();
+                var mainTitle = $("#mainTitle").val();
+                var subTitle = $("#subTitle").val();
+
+                if (!!locateData) {
+                    createMap(mainTitle, subTitle, locateData);
+                } else {
+                    alert("请输入要搜索的城市");
+                }
+            }
+        });
+        $("#locateCity").keydown(function (event) {
+            if (event.keyCode === 13) {
+                var locateData = $("#locateArea").val();
+                var mainTitle = $("#mainTitle").val();
+                var subTitle = $("#subTitle").val();
+
+                if (!!locateData) {
+                    createMap(mainTitle, subTitle, locateData);
+                } else {
+                    alert("请输入要搜索的城市");
+                }
+            }
+        })
+        $("#btnlocateArea").on("click", function (event) {
+
+            var locateData = $("#locateCity").val();
+            var mainTitle = $("#mainTitle").val();
+            var subTitle = $("#subTitle").val();
+
+            if (!!locateData) {
+                createMap(mainTitle, subTitle, locateData);
+            } else {
+                alert("请输入要搜索的城市");
+            }
+
+        });
+        $("#locateSpan").on("click", function (event) {
+            var locateData = $("#locateArea").val();
+            var mainTitle = $("#mainTitle").val();
+            var subTitle = $("#subTitle").val();
+            if (!!locateData) {
+                createMap(mainTitle, subTitle, locateData);
+            } else {
+                alert("请输入要搜索的城市");
+            }
+        });
+        $("#tipsForArea").keydown(function (event) {
+            if (event.keyCode === 13) {
+                var locateData = $("#locateArea").val();
+                var mainTitle = $("#mainTitle").val();
+                var subTitle = $("#subTitle").val();
+                var tipsContent = $("#tipsForArea").val();
+                if (!!locateData && !!tipsContent) {
+                    createMap(mainTitle, subTitle, locateData, tipsContent);
+                    $("#addTipDiv").css("display", "none");
+                    $("#tipsForArea").val("");
+                    //layer.closeAll();
+                } else {
+                    alert("请输入要添加的tips");
+                }
+            }
+        });
+        $("#addTips").on("click", function (event) {
+            var locateData = $("#locateArea").val();
+            var mainTitle = $("#mainTitle").val();
+            var subTitle = $("#subTitle").val();
+            var tipsContent = $("#tipsForArea").val();
+            if (!!locateData && !!tipsContent) {
+                createMap(mainTitle, subTitle, locateData, tipsContent);
+                $("#addTipDiv").css("display", "none");
+                $("#tipsForArea").val("");
+            } else {
+                alert("请输入要添加的tips");
+            }
+        });
+
+        //关键数据说明增加新项目
+        $("#addItem").on("click", function (evt) {
+            var txtBlock = [];
+            $("#productTypeList .txtarea").each(function (index, value) {
+                var that = value;
+                var textareaShow = $(that).css("display")
+                if (textareaShow === "block") {
+                    txtBlock.push(index);
+                    alert("请先保存编辑项目再继续添加！");
+                }
+            });
+            if (txtBlock.length === 0) {
+                var tempDom = $('<li style="padding: 6px;"> ' +
+                        '<a href="javascript:void(0);" flag="true"> ' +
+                        '<i class="fa fa-circle text-navy"></i> 点击修改</a> ' +
+                        '<textarea placeholder="请输入修改内容，并回车保存" class="txtarea" style="width: 100%;height: 100%;min-height: 60px;display: block;border: lightskyblue;/*background-color: #FAFAD2*/"></textarea> ' +
+                        '</li>');
+                //tempDom.insertAfter($("#productTypeList > li:last-child"));
+                $("#productTypeList").append(tempDom);
+                $("#productTypeList a").last().on("click", function (evt) {
+                    console.log(evt.target);
+                    if ($(evt.target).attr("flag") === "true") {
+                        $(evt.target).next().css("display", "block");
+                        $(evt.target).attr("flag", "false");
+                    } else {
+                        $(evt.target).next().css("display", "none");
+                        $(evt.target).attr("flag", "true");
+                    }
+                });
+                $("#productTypeList .txtarea").last().keydown(function (evt) {
+                    if (evt.keyCode === 13 && !evt.shiftKey) {
+                        evt.preventDefault();
+                        if (!!$(this).val()) {
+                            var originInnerHTML = $(evt.target).prev()[0].innerHTML.substring(0, $(evt.target).prev()[0].innerHTML.lastIndexOf(">") + 1);
+                            $(evt.target).prev().html(originInnerHTML + " " + $(this).val());
+                        }
+                        $(evt.target).css("display", "none");
+                    }
+                });
+            }
+        });
+        //编辑数据观点
+        $("#showNotes").on("click", function (evt) {
+            $("#showNotes").css("display", "none");
+            $("#editNotes").css("display", "block");
+        });
+        $("#saveEditNotes").on("click", function (evt) {
+            var editNotesContent = $("#editNotes").val();
+            if (!editNotesContent) {
+                if (confirm("您确定不填写内容吗?")) {
+                    $("#showNotes").css("display", "block");
+                    $("#editNotes").css("display", "none");
+                }
+            }
+            $("#showNotes").text(editNotesContent);
+            $("#showNotes").css("display", "block");
+            $("#editNotes").val("");
+            $("#editNotes").css("display", "none");
+        });
+        $("#quitEditNotes").on("click", function (evt) {
+            $("#showNotes").css("display", "block");
+            $("#editNotes").val("");
+            $("#editNotes").css("display", "none");
+        });
+
+        $(".text-legend").mouseover(function (evt) {
+            $(evt.target).next().next().css("visibility", "visible");
+        }).mouseout(function (evt) {
+            $(evt.target).next().next().css("visibility", "hidden");
+        });
+        //分享至邮箱
+        $('#sendEmail').on('click', function () {
+            layer.open({
+                type: 1,
+                title: "",
+                offset: "150px",
+                resize: true,
+//                move:".layui-layer-title",
+                scrollbar: false,
+                area: ['600px', '360px'],
+                shadeClose: true, //点击遮罩关闭
+                content: '<div style="padding: 50px;">' +
+                '<h1 style="font-size: 34px;font-weight: normal;padding: 5px 0 30px 12px;">Share this Widget</h1> ' +
+                '<ul class="category-list" style="padding: 0px 0 5px 0"> ' +
+                '<li> ' +
+                '<div class="form-group margin-bottom-none" style="padding-bottom: 65px;"> ' +
+                '<div class="col-sm-9"> ' +
+                '<input class="form-control input-sm" id="mailAddress" placeholder="User,group,or email..." style="border: 0px;border-bottom: 1px solid #e5e6e7"> ' +
+                '</div> ' +
+                '<div class="col-sm-3"> ' +
+                '<a id="send">' +
+                '<button type="submit" id="" class="btn btn-danger pull-right btn-block btn-sm" style="background-color: #0099CC;border-color: #0099CC;">Send</button> ' +
+                '</a>' +
+                '</div> ' +
+                '</div> ' +
+                '</li> ' +
+                '<li> ' +
+                '<div class="form-group margin-bottom-none"> ' +
+                '<div class="col-sm-12"> ' +
+                '<input class="form-control " id="saySth" placeholder="Add a personal note..." style="border: 0;border-bottom: 1px solid #e5e6e7;"> ' +
+                '</div> ' +
+                '</div> ' +
+                '</li> ' +
+                '</ul>' +
+                '</div>'
+            });
+            $("#send").on("click", function (evt) {
+                var sendToAddress = $("#mailAddress").val();
+                var whatSays = $("#saySth").val();
+                var emailSubject = $("#emailSubject").val() || "网站分享";
+                $("#send").attr("href", "mailto:" + sendToAddress + "?subject=" + emailSubject + "&&body=" + whatSays + "%0d%0a链接地址：" + window.location.href);
+            });
+        });
+        //地图编辑
+        $("#editmap").on("click", function () {
+            layer.open({
+                type: 1,
+                title: " ",
+                offset: "150px",
+                move: ".layui-layer-title",
+                scrollbar: false,
+                area: ["290px", "420px"],
+                resize: true,
+                shadeClose: true,
+                content: '<div style="padding: 30px;"> ' +
+                '<h5 style="font-size: 27px;">地图编辑</h5>' +
+                ' <ul class="folder-list m-b-md" style="padding: 0"> ' +
+                '<li>' +
+                ' <a href="javascript:void(0);"> <i class="fa fa-file-text "></i> 主标题</a>' +
+                ' <input type="text" id="mainTitle" class="form-control" placeholder="请输入主标题，并回车确认">' +
+                ' </li> ' +
+                '<li>' +
+                ' <a href="javascript:void(0);"> <i class="fa fa-file-text-o"></i> 副标题</a> ' +
+                '<input type="text" id="subTitle" class="form-control" placeholder="请输入副标题，并回车确认">' +
+                '</li> ' +
+                '<li> ' +
+                '<a href="javascript:void(0);"> <i class="fa fa-location-arrow"></i> 区域</a> ' +
+                '<input type="text" class="form-control" id="locateArea" placeholder="请输入定位城市，并回车确认"> ' +
+                '</li> ' +
+                '<li id="addTipDiv" style="display: none;"> ' +
+                '<a href="javascript:void(0);"> <i class="fa fa-pencil"></i> 属性</a> ' +
+                '<input type="text" class="form-control" id="tipsForArea" placeholder="为城市增加标签，并回车确认"> ' +
+                '</li> ' +
+                '</ul> ' +
+                '</div>'
+            });
+
+        });
+//        $("#keydatadetail").on("click",function () {
+//            layer.open({
+//                type:1,
+//                title:" ",
+//                offset:"150px",
+//                resize:true,
+//                area:["350px","440px"],
+//                move:".layui-layer-title",
+//                scrollbar:false,
+//                shadeClose:true,
+//                content:'<div style="padding: 30px;">' +
+//                '<h1>关键数据说明</h1>' +
+//                '<button type="button" style="margin-top: -35px;" id="addItem" class="btn btn-default pull-right"><i class="fa fa-plus"></i> Add item</button>'+
+//                '<ul class="category-list" style="padding: 0" id="productTypeList" >' +
+//                '<li style="padding: 6px;"> ' +
+//                '<a href="javascript:void(0);" flag="true"> <i class="fa fa-circle text-navy"></i> 数据说明</a> ' +
+//                '<input type="text" id="productType1" class="productType" placeholder="请输入产品类型，回车确认"> ' +
+//                '</li> ' +
+//                '</ul>' +
+//                '</div>'
+//            });
+//            $("#productTypeList a").on("click",function (evt) {
+//                console.log(evt.target);
+//                if($(evt.target).attr("flag")==="true"){
+//                    $(evt.target).next().css("display","block");
+//                    $(evt.target).attr("flag","false");
+//                }else{
+//                    $(evt.target).next().css("display","none");
+//                    $(evt.target).attr("flag","true");
+//                }
+//            });
+//            $(".productType").keydown(function (evt) {
+//                if(evt.keyCode===13){
+//                    if(!!$(this).val()){
+//                        var originInnerHTML=$(evt.target).prev()[0].innerHTML.substring(0,$(evt.target).prev()[0].innerHTML.lastIndexOf(">")+1);
+//                        $(evt.target).prev().html(originInnerHTML+" "+$(this).val());
+//                    }
+//                    $(evt.target).css("display","none");
+//                }
+//            });
+//            $("#addItem").on("click",function (evt) {
+//                var tempDom=$('<li style="padding: 6px;"> ' +
+//                '<a href="javascript:void(0);" flag="true"> <i class="fa fa-circle text-navy"></i> </a> ' +
+//                '<input type="text" id="" class="productType" style="display: block;" placeholder="请输入产品类型"> ' +
+//                '</li>');
+//                tempDom.insertAfter($("#productTypeList > li:last-child"));
+//                $("#productTypeList a").last().on("click",function (evt) {
+//                    console.log(evt.target);
+//                    if($(evt.target).attr("flag")==="true"){
+//                        $(evt.target).next().css("display","block");
+//                        $(evt.target).attr("flag","false");
+//                    }else{
+//                        $(evt.target).next().css("display","none");
+//                        $(evt.target).attr("flag","true");
+//                    }
+//                });
+//                $(".productType").last().keydown(function (evt) {
+//                    if(evt.keyCode===13){
+//                        if(!!$(this).val()){
+//                            var originInnerHTML=$(evt.target).prev()[0].innerHTML.substring(0,$(evt.target).prev()[0].innerHTML.lastIndexOf(">")+1);
+//                            $(evt.target).prev().html(originInnerHTML+" "+$(this).val());
+//                        }
+//                        $(evt.target).css("display","none");
+//                    }
+//                });
+//            });
+//        });
+
+        $("#productTypeList .txtarea").last().keydown(function (evt) {
+            if (evt.keyCode === 13 && !evt.shiftKey) {
+                evt.preventDefault();
+                if (!!$(this).val()) {
+                    var originInnerHTML = $(evt.target).prev()[0].innerHTML.substring(0, $(evt.target).prev()[0].innerHTML.lastIndexOf(">") + 1);
+                    $(evt.target).prev().html(originInnerHTML + " " + $(this).val());
+                }
+                $(evt.target).css("display", "none");
+            }
+        });
+    });
+    function init() {
+        createMap(mainTitle, subTitle);
+    }
+    //定位的点
+    var effectdata = [];
+    function contains(value, array) {
+        for (var i = 0; i < array.length; i++) {
+            var valueInArray = array[i].name;
+            valueInArray = valueInArray.substring(0, valueInArray.indexOf(":"));
+            if (value === valueInArray) {
+                return i;
+            }
+        }
+        return -1;
+    }
+    function createMap(mainTit, subTit, locatedata, inputtips) {
+        var mapDom = document.getElementById("mapDiv");
+        var mapCharts = echarts.init(mapDom);
+
+        var tempeffectdata = [];
+        //找到输入城市匹配的数据
+        for (var i = 0; i < data.length; i++) {
+            var geoCoord = geoCoordMap[data[i].name];
+            var geoName = data[i].name;
+            if (geoCoord && geoName === locatedata) {
+                if (!!inputtips) data[i].data = inputtips;
+                tempeffectdata.push({
+                    name: data[i].name + ":" + data[i].data,
+                    value: geoCoord.concat(data[i].value),
+                })
+            }
+        }
+        if (effectdata.length === 0) {
+            effectdata = effectdata.concat(tempeffectdata);
+        } else {
+            var index = contains(locatedata, effectdata);
+            if (index !== -1) {
+                effectdata[index] = tempeffectdata[0];
+            } else if (index === -1) {
+                effectdata = effectdata.concat(tempeffectdata);
+            }
+//            for(var i=0;i<effectdata.length;i++){
+//                var comparecity=effectdata[i].name;
+//                comparecity=comparecity.substring(0,comparecity.indexOf(":"));
+//                if(locatedata===comparecity){
+//                    effectdata[i]=tempeffectdata[0];
+//                    break;
+//                }
+//            }
+//            effectdata=effectdata.concat(tempeffectdata);
+
+        }
+        var convertData = function (data) {
+            var res = [];
+            for (var i = 0; i < data.length; i++) {
+                var geoCoord = geoCoordMap[data[i].name];
+                if (geoCoord) {
+                    res.push({
+                        name: data[i].name + ":" + data[i].data,
+                        value: geoCoord.concat(data[i].value),
+                    });
+                }
+            }
+            return res;
+        };
+        if (!!locatedata && tempeffectdata.length === 0) {
+            alert("定位无效，请检查您的地名并重新输入");
+        } else if (!!locatedata) {
+            $("#addTipDiv").css("display", "");
+        }
+        var option = {
+            backgroundColor: '#FFFFFF',
+            title: {
+                text: mainTit,
+                subtext: subTit,
+                left: 'center',
+                textStyle: {
+                    color: 'black'
+                }
+            },
+            tooltip: {
+                trigger: 'item',
+                formatter: '{b}',
+                show: false
+            },
+            toolbox: {
+                show: false,
+                feature: {
+                    brush: {
+                        type: ["rect"]
+                    },
+                    dataView: {},
+                    saveAsImage: {
+                        pixelRatio: 2
+                    },
+
+                },
+                iconStyle: {
+                    emphasis: {
+                        borderColor: "#63B8FF"
+                    }
+                }
+            },
+//            legend: {
+//                orient: 'vertical',
+//                y: 'bottom',
+//                x:'right',
+//                data:['pm2.5'],
+//                textStyle: {
+//                    color: '#fff'
+//                }
+//            },
+            geo: {
+                map: 'china',
+                label: {
+                    emphasis: {
+                        show: false
+                    }
+                },
+                roam: false,
+                itemStyle: {
+                    normal: {
+                        areaColor: '#004882',
+                        borderColor: '#20a6C7'
+                    },
+                    emphasis: {
+                        areaColor: '#2a333d'
+                    }
+                }
+            },
+            series: [
+                {
+                    name: 'pm2.5',
+                    type: 'scatter',
+                    coordinateSystem: 'geo',
+                    data: convertData(data),
+                    symbolSize: function (val) {
+                        //return val[2] / 10;
+                        return 0;
+                    },
+                    label: {
+                        normal: {
+                            formatter: '{b}',
+                            position: 'right',
+                            show: false
+                        },
+                        emphasis: {
+                            show: true,
+                            textStyle: {
+                                color: "#636363"
+                            }
+                        }
+                    },
+                    itemStyle: {
+                        normal: {
+                            color: '#46bee9'
+                        },
+                    }
+                },
+                {
+                    name: 'Top 5',
+                    type: 'effectScatter',
+                    coordinateSystem: 'geo',
+                    /*  data: convertData(data.sort(function (a, b) {
+                     return b.value - a.value;
+                     }).slice(0, 1)),*/
+                    data: effectdata,
+                    symbolSize: function (val) {
+                        return 20;
+                    },
+                    showEffectOn: 'render',
+                    rippleEffect: {
+                        brushType: 'stroke'
+                    },
+                    hoverAnimation: true,
+                    label: {
+                        normal: {
+                            formatter: '{b}',
+                            position: 'right',
+                            show: true
+                        }
+                    },
+                    itemStyle: {
+                        normal: {
+                            color: '#60ff44',
+                            shadowBlur: 8,
+                            shadowColor: '#333'
+                        }
+                    },
+                    zlevel: 1
+                }
+            ]
+        };
+        mapCharts.setOption(option);
+        mapCharts.on("click", function (param) {
+            alert("点击的是：" + param.name);
+
+        });
+    }
+
+
+</script>
+</body>
+
+</html>

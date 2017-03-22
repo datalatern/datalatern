@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <link href="css/basic.css" rel="stylesheet" type="text/css" />
+    <link href="css/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <style type="text/css">
+</style>
+</head>
+
+<body>
+    <nav class="navbar navbar-default new-nav">
+  <div class="container-fluid">
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+     
+        <li class="active"><a href="javascript:;">历年对比图</a></li>
+        <!-- <li class=""><a href="/dream">商业场景</a></li> -->
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+    <div id="main" style="height:500px"></div>
+<script src="js/jquery-1.9.1.min.js"></script>
+<script src="css/bootstrap/js/bootstrap.min.js"></script>
+<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="height:400px"></div>
+    <!-- ECharts单文件引入 -->
+    <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+    <script src="http://echarts.baidu.com/echarts2/doc/example/theme/dark.js"></script>
+    <script type="text/javascript">
+        // 路径配置
+        require.config({
+            paths: {
+                echarts: 'http://echarts.baidu.com/build/dist'
+            }
+        });
+        
+        // 使用
+        require(
+            [
+                'echarts',
+                'echarts/chart/bar',
+                'echarts/chart/map' // 使用柱状图就加载bar模块，按需加载
+            ],
+            function (ec) {
+                // 基于准备好的dom，初始化echarts图表
+                var myChart = ec.init(document.getElementById('main')); 
+                
+                var option = {
+                      title: {
+                        text: '数据分析',
+                        subtext: '对比历年5年数据图'
+                    },
+                    tooltip : {
+                        trigger: 'axis',
+                        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                            type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                        }
+                    },
+                    legend: {
+                        data:['总用户数','PV浏览量','UV浏览量','转化量']
+                    },
+                    grid: {
+                        left: '3%',
+                        right: '14%',
+                        bottom: '3%',
+                        containLabel: true
+                    },
+                    xAxis : [
+                        {
+                            type : 'category',
+                            data : ['2016-07-01','2015-07-01','2014-07-01','2014-07-01','2013-07-01','2012-07-01']
+                        }
+                    ],
+                    yAxis : [
+                        {
+                            type : 'value'
+                        }
+                    ],
+                    series : [
+                        {
+                            name:'总用户数',
+                            type:'bar',
+                            data:[320, 332, 301, 334, 390, 330, 320]
+                        },
+                        
+                        {
+                            name:'PV浏览量',
+                            type:'bar',
+                            stack: '广告',
+                            data:[150, 232, 201, 154, 190, 330, 410]
+                        },
+                        {
+                            name:'UV浏览量',
+                           
+                            type:'bar',
+                            data:[862, 1018, 964, 1026, 1679, 1600, 1570],
+                            markLine : {
+                                lineStyle: {
+                                    normal: {
+                                        type: 'dashed'
+                                    }
+                                },
+                                data : [
+                                    [{type : 'min'}, {type : 'max'}]
+                                ]
+                            }
+                        },
+                        {
+                            name:'转化量',
+                            type:'bar',
+                            barWidth : 5,
+                            stack: 'UV浏览量',
+                            data:[620, 732, 701, 734, 1090, 1130, 1120]
+                        },
+
+
+                    ]
+                };
+        
+                // 为echarts对象加载数据 
+                myChart.setOption(option); 
+            }
+        );
+    </script>
+</body>
+</html>

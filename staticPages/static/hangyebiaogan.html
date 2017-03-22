@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>行业标杆</title>
+
+<link href="css/timeline.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript" src="js/modernizr.js"></script>
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+
+</head>
+<body>
+	<header>
+		<h1>行业标杆</h1>
+	</header>
+
+	<section id="cd-timeline" class="cd-container">
+		<div class="cd-timeline-block">
+			<div class="cd-timeline-img cd-location">
+				<img src="images/cd-icon-location.svg" alt="Location">
+			</div><!-- cd-timeline-img -->
+
+			<div class="cd-timeline-content">
+				<h2>1.【行业新趋势】</h2>
+				<p>汽车制造盈利指数：上汽盈利第一，年营业收入3512.65亿元，同比增长8.54%
+2016年上半年已上市的汽车制造业大型国有汽车集团的半年成绩单出齐，其平均业绩增速超过行业整体水平。
+年销量排名前六的汽车集团中，上汽集团、长安汽车、东风汽车集团、北汽股份、广汽集团皆已在A股（及/或港股）上市，仅一汽集团暂未实现整体上市（旗下拥有一汽轿车、一汽夏利等上市平台）。</p>
+				<a href="行业新趋势.html" class="cd-read-more">查看详情</a>
+			</div> <!-- cd-timeline-content -->
+		</div> <!-- cd-timeline-block -->
+
+		<div class="cd-timeline-block">
+			<div class="cd-timeline-img cd-location">
+				<img src="images/cd-icon-location.svg" alt="Location">
+			</div> <!-- cd-timeline-img -->
+
+			<div class="cd-timeline-content">
+				<h2>2.【创新商业模式】</h2>
+				<p>航空旅游金融-模式、旅游保险模式基于保险的场景创新新突破点</p>
+				<a href="创新商业模式.html" class="cd-read-more">查看详情</a>
+			</div> <!-- cd-timeline-content -->
+		</div> <!-- cd-timeline-block -->
+
+		<div class="cd-timeline-block">
+			<div class="cd-timeline-img cd-location">
+				<img src="images/cd-icon-location.svg" alt="Location">
+			</div> <!-- cd-timeline-img -->
+
+			<div class="cd-timeline-content">
+				<h2>3.【行业新政策】</h2>
+				<p>2017中国汽车行业客户满意度调研结果发布会在京召开
+中汽中心将继续与中国消费者报依托5年来建立起的全国汽车消费者满意度基础数据库，为广大消费者选车、购车和整车企业了解消费者需求、把握汽车市场动态等提供全方位参考。
+</p>
+				<a href="行业新政策.html" class="cd-read-more">查看详情</a>
+			</div> <!-- cd-timeline-content -->
+		</div> <!-- cd-timeline-block -->
+
+		<div class="cd-timeline-block">
+			<div class="cd-timeline-img cd-location">
+				<img src="images/cd-icon-location.svg" alt="Location">
+			</div> <!-- cd-timeline-img -->
+
+			<div class="cd-timeline-content">
+				<h2>4.【科技创新（关注实体）】</h2>
+				<p>汽车行业跨界创新科技应用
+关注国内汽车垂直领域创新，综合国内外科技从业领域创业业务方向，整合出汽车行业互联网跨界改造的一些基础点，如下：互联网跨界创新；生产运营和市场指导；工业互联网升级。</p>
+				<a href="科技创新.html" class="cd-read-more">查看详情</a>
+			</div> <!-- cd-timeline-content -->
+		</div> <!-- cd-timeline-block -->
+
+		<div class="cd-timeline-block">
+			<div class="cd-timeline-img cd-location">
+				<img src="images/cd-icon-location.svg" alt="Location">
+			</div> <!-- cd-timeline-img -->
+
+			<div class="cd-timeline-content">
+				<h2>5.【竞争对手分析】</h2>
+				<p>汽车行业竞争对手分析东风汽车、汽车行业竞争对手分析北京汽车、国内竞争对手模式分析、国外竞争对手分析、旅游行业发展新形势、旅游行业分析、旅游市场产品类渗透情况</p>
+				<a href="竞争对手分析.html" class="cd-read-more">查看详情</a>
+			</div> <!-- cd-timeline-content -->
+		</div> <!-- cd-timeline-block -->
+
+		
+	</section> <!-- cd-timeline -->
+	
+<script>
+$(function(){
+	var $timeline_block = $('.cd-timeline-block');
+	//hide timeline blocks which are outside the viewport
+	$timeline_block.each(function(){
+		if($(this).offset().top > $(window).scrollTop()+$(window).height()*0.75) {
+			$(this).find('.cd-timeline-img, .cd-timeline-content').addClass('is-hidden');
+		}
+	});
+	//on scolling, show/animate timeline blocks when enter the viewport
+	$(window).on('scroll', function(){
+		$timeline_block.each(function(){
+			if( $(this).offset().top <= $(window).scrollTop()+$(window).height()*0.75 && $(this).find('.cd-timeline-img').hasClass('is-hidden') ) {
+				$(this).find('.cd-timeline-img, .cd-timeline-content').removeClass('is-hidden').addClass('bounce-in');
+			}
+		});
+	});
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,111 @@
+.gray-bg {
+    background-color: #f3f3f4;
+}
+form {
+    position: absolute;
+    top: 1em;
+    left: 1em;
+}
+
+path {
+    fill-rule: evenodd;
+    stroke: #333;
+    stroke-width: 2px;
+}
+
+.sun path {
+    fill: #6baed6;
+}
+
+.planet path {
+    fill: #9ecae1;
+}
+
+.annulus path {
+    fill: #c6dbef;
+}
+.col-lg-3{
+    padding: 10px 0;
+    height: 240px;
+}
+.col-lg-6{
+    padding: 10px;
+    height: 480px;
+}
+.topcol{
+    margin-top: -240px;
+    height: 480px;
+}
+
+.innerpannel {
+    background-color: #0099CC;
+    padding: 10px;
+    height: 220px;
+}
+.innerpannel h5{
+    padding-left: 30px;
+    letter-spacing: 3px;
+    color: #E6FFF7;
+}
+.innerpannel h5:first-child{
+    padding-top: 50px;
+}
+.inner {
+    padding: 10px;
+    background-color: #ffffff !important;
+    height: 470px;
+}
+.inner dd{
+    padding-left: 30px;
+    font-size: 16px;
+    color: #b2b2b2;
+}
+.inner dt{
+    padding-left: 32px;
+    font-size: 14px;
+    padding-bottom: 20px;
+}
+.inner dt a{
+    color: #9ecae1;
+}
+.innerLine{
+    height: 220px;
+    padding: 20px 10px;
+    background-color: #ffffff !important;
+}
+.innerLine p,.inner p{
+    padding-left: 30px;
+    font-size: 12px;
+    color: #b2b2b2;
+}
+.innerLine h3{
+    padding-left: 30px;
+    font-size: 38px;
+    font-weight: bold;
+    margin: 20px 0 30px 0;
+    color: #636363;
+    white-space: nowrap;
+}
+.innerLine h4{
+    padding-left: 30px;
+
+}
+.widthInner1{
+    padding: 10px 0 10px 10px;
+}
+.widthInner2{
+    padding: 10px 10px 10px 10px;
+}
+.triangle-up::before {
+    content: url("../img/tri.png");
+    width: 1px;
+    height: 1px;
+}
+dl dd {
+    font-size: large;
+    font-weight: bold;
+}
+#predictLine {
+    width: 300px;
+    height: 190px;
+}

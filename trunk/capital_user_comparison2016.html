@@ -1,0 +1,216 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <link href="css/basic.css" rel="stylesheet" type="text/css" />
+    <link href="css/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <style type="text/css">
+    *{margin: 0;padding:0;}
+    .clear:after{content:".";display:block;height:0;line-height:0;clear:both;visibility:hidden;}
+    .clear{*zoom:1;clear: both;}
+    .main{width: 1000px;margin: 40px auto;height: 500px;}
+</style>
+</head>
+
+<body>
+    <nav class="navbar navbar-default new-nav">
+  <div class="container-fluid">
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+     
+        <!-- <li class="active"><a href="javascript:;">历年对比图</a></li>
+        <li class=""><a href="/dream">商业场景</a></li> -->
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+    <div class="main clear">
+        <div id="main" class="w600" style="height:400px;width:1000px;"></div>
+
+        <div id="main1" class="w600" style="height:400px;width:1000px;margin-top:30px;"></div>
+    </div>
+    
+<script src="js/jquery-1.9.1.min.js"></script>
+<script src="css/bootstrap/js/bootstrap.min.js"></script>
+<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="height:400px"></div>
+    <!-- ECharts单文件引入 -->
+    <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+    <script src="http://echarts.baidu.com/echarts2/doc/example/theme/dark.js"></script>
+    <script type="text/javascript">
+        // 路径配置
+        require.config({
+            paths: {
+                echarts: 'http://echarts.baidu.com/build/dist'
+            }
+        });
+        
+        // 使用
+        require(
+            [
+                'echarts',
+                'echarts/chart/bar',
+                'echarts/chart/map' // 使用柱状图就加载bar模块，按需加载
+            ],
+            function (ec) {
+                // 基于准备好的dom，初始化echarts图表
+                var myChart = ec.init(document.getElementById('main')); 
+                
+                var option = {
+                      title: {
+                        text: '浏览量数据分析',
+                        subtext: '对比历年3年数据图'
+                    },
+                    tooltip : {
+                        trigger: 'axis',
+                        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                            type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                        }
+                    },
+                    legend: {
+                        data:['PV浏览量','UV浏览量']
+                    },
+                    grid: {
+                        left: '3%',
+                        right: '14%',
+                        bottom: '3%',
+                        containLabel: true
+                    },
+                    xAxis : [
+                        {
+                            type : 'category',
+                            data : ['2013年下半年','2014年上半年','2014年下半年','2015年上半年','2015年下半年','2016年上半年']
+                        }
+                    ],
+                    yAxis : [
+                        {
+                            type : 'value'
+                        }
+                    ],
+                    series : [
+                        
+                        
+                        {
+                            name:'PV浏览量',
+                            type:'bar',
+                            stack: '广告',
+                            data:[  11505197,9449466, 8771701,8902687,12346961,14794094  ],
+                            markLine : {
+                                lineStyle: {
+                                    normal: {
+                                        type: 'dashed'
+                                    }
+                                },
+                                data : [
+                                    [{type : 'min'}, {type : 'max'}]
+                                ]
+                            }
+                        },
+                        {
+                            name:'UV浏览量',
+                           
+                            type:'bar',
+                            data:[890403,866330,1168185,992394,1046033,871230   ]
+                            
+                        }
+
+
+                    ]
+                };
+        
+                // 为echarts对象加载数据 
+                myChart.setOption(option); 
+            }
+        );
+    </script>
+
+    <script type="text/javascript">
+        // 路径配置
+        require.config({
+            paths: {
+                echarts: 'http://echarts.baidu.com/build/dist'
+            }
+        });
+        
+        // 使用
+        require(
+            [
+                'echarts',
+                'echarts/chart/bar',
+                'echarts/chart/map' // 使用柱状图就加载bar模块，按需加载
+            ],
+            function (ec) {
+                // 基于准备好的dom，初始化echarts图表
+                var myChart = ec.init(document.getElementById('main1')); 
+                
+                var option = {
+                      title: {
+                        text: '用户数据分析',
+                        subtext: '对比历年3年数据图'
+                    },
+                    tooltip : {
+                        trigger: 'axis',
+                        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                            type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                        }
+                    },
+                    legend: {
+                        data:['总用户数','增长量']
+                    },
+                    grid: {
+                        left: '3%',
+                        right: '14%',
+                        bottom: '3%',
+                        containLabel: true
+                    },
+                    xAxis : [
+                        {
+                            type : 'category',
+                            data : ['2013年下半年','2014年上半年','2014年下半年','2015年上半年','2015年下半年','2016年上半年']
+                        }
+                    ],
+                    yAxis : [
+                        {
+                            type : 'value'
+                        }
+                    ],
+                    series : [
+                        {
+                            name:'总用户数',
+                            type:'bar',
+                            data:[ 826574,854300,920964,988843, 1061399,1164829   ],
+                            markLine : {
+                                lineStyle: {
+                                    normal: {
+                                        type: 'dashed'
+                                    }
+                                },
+                                data : [
+                                    [{type : 'min'}, {type : 'max'}]
+                                ]
+                            }
+                        },
+                        
+                        {
+                            name:'用户增长量',
+                            type:'bar',
+                            barWidth : 5,
+                            stack: '',
+                            data:[ 21289,27726,66664, 67879,72556,103430  ]
+
+                        },
+
+
+                    ]
+                };
+        
+                // 为echarts对象加载数据 
+                myChart.setOption(option); 
+            }
+        );
+    </script>
+</body>
+</html>

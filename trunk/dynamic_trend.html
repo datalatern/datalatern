@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <link href="css/basic.css" rel="stylesheet" type="text/css" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <script src="js/jquery-1.9.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+     <!-- ECharts单文件引入 -->
+    <script src="js/echarts.js"></script>
+    <script src="js/dark.js"></script>
+</head>
+
+<body>
+    <div id="main" style="height:600px"></div>
+<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="height:400px"></div>    
+    <script type="text/javascript">
+        // 路径配置
+        require.config({
+            paths: {
+                echarts: 'http://echarts.baidu.com/build/dist'
+            }
+        });
+        
+        // 使用
+        require(
+            [
+                'echarts',
+                'echarts/chart/scatter',
+                'echarts/chart/bar',
+                'echarts/chart/line', 
+                'echarts/chart/k' // 使用柱状图就加载bar模块，按需加载
+            ],
+            function (ec) {
+                // 基于准备好的dom，初始化echarts图表
+                var myChart = ec.init(document.getElementById('main')); 
+                
+                // 指定图表的配置项和数据
+                var option = {
+                    title: {
+                        text: '动态数据',
+                        subtext: '纯属'
+                    },
+                    tooltip: {
+                        trigger: 'axis'
+                    },
+                    legend: {
+                        data:['客户数量', '销售额']
+                    },
+                    toolbox: {
+                        show: true,
+                        feature: {
+                            dataView: {readOnly: false},
+                            restore: {},
+                            saveAsImage: {}
+                        }
+                    },
+                    dataZoom: {
+                        show: false,
+                        start: 0,
+                        end: 100
+                    },
+                    xAxis: [
+                        {
+                            type: 'category',
+                            boundaryGap: true,
+                            data: (function (){
+                                var now = new Date();
+                                var res = [];
+                                var len = 10;
+                                while (len--) {
+                                    res.unshift(now.toLocaleTimeString().replace(/^\D*/,''));
+                                    now = new Date(now - 2000);
+                                }
+                                return res;
+                            })()
+                        },
+                        {
+                            type: 'category',
+                            boundaryGap: true,
+                            data: (function (){
+                                var res = [];
+                                var len = 10;
+                                while (len--) {
+                                    res.push(len + 1);
+                                }
+                                return res;
+                            })()
+                        }
+                    ],
+                    yAxis: [
+                        {
+                            type: 'value',
+                            scale: true,
+                            name: '价格',
+                            max: 30,
+                            min: 0,
+                            boundaryGap: [0.2, 0.2]
+                        },
+                        {
+                            type: 'value',
+                            scale: true,
+                            name: '预购量',
+                            max: 1200,
+                            min: 0,
+                            boundaryGap: [0.2, 0.2]
+                        }
+                    ],
+                    series: [
+                        {
+                            name:'销售额',
+                            type:'bar',
+                            xAxisIndex: 1,
+                            yAxisIndex: 1,
+                            data:(function (){
+                                var res = [];
+                                var len = 10;
+                                while (len--) {
+                                    res.push(Math.round(Math.random() * 1000));
+                                }
+                                return res;
+                            })()
+                        },
+                        {
+                            name:'客户数量',
+                            type:'line',
+                            data:(function (){
+                                var res = [];
+                                var len = 0;
+                                while (len < 10) {
+                                    res.push((Math.random()*10 + 5).toFixed(1) - 0);
+                                    len++;
+                                }
+                                return res;
+                            })()
+                        }
+                    ]
+                };
+
+                var app = {};
+
+                clearInterval(app.timeTicket);  
+                app.count = 30;                 
+                app.timeTicket = setInterval(function (){
+                    axisData = (new Date()).toLocaleTimeString().replace(/^\D*/,'');
+
+                    var data0 = option.series[0].data;
+                    var data1 = option.series[1].data;
+                    data0.shift();
+                    data0.push(Math.round(Math.random() * 1000));
+                    data1.shift();
+                    data1.push((Math.random() * 10 + 5).toFixed(1) - 0);
+
+                    option.xAxis[0].data.shift();
+                    option.xAxis[0].data.push(axisData);
+                    option.xAxis[1].data.shift();
+                    option.xAxis[1].data.push(app.count++);
+
+                    myChart.setOption(option);
+                }, 2100);
+
+                // 为echarts对象加载数据 
+               myChart.setOption(option); 
+            }
+        );
+    </script>
+</body>
+</html>

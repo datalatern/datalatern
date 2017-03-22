@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Leaflet 加载 Echarts3</title>
+    <link rel="stylesheet" href="css/leaflet.css">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+    <link href="css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="css/plugins/summernote/summernote.css" rel="stylesheet">
+    <link href="css/plugins/summernote/summernote-bs3.css" rel="stylesheet">
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link href="css/jquery-ui.min.css" rel="stylesheet">
+    <link href="css/style.min.css?v=4.0.0" rel="stylesheet">
+    <base target="_blank">
+    <link href="css/layer.css" rel="stylesheet">
+    <style>
+        html, body{
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        .productType {
+            background-color: #FFF;
+            background-image: none;
+            border: 1px solid #e5e6e7;
+            border-radius: 1px;
+            color: inherit;
+            display: block;
+            padding: 6px 12px;
+            -webkit-transition: border-color .15s ease-in-out 0s, box-shadow .15s ease-in-out 0s;
+            transition: border-color .15s ease-in-out 0s, box-shadow .15s ease-in-out 0s;
+            width: 100%;
+            font-size: 14px;
+            display: none;
+        }
+
+        .text-legend:hover {
+            color: #63B8FF;
+        }
+
+        .editlenged {
+            display: block;
+            text-align: center;
+            font-size: 12px;
+            margin-top: 2px;
+            color: #63B8FF;
+            visibility: hidden;
+        }
+
+        #ui-id-1 {
+            z-index: 198910141 !important;
+        }
+
+        ::-webkit-input-placeholder {
+            font-size: 12px;
+        }
+
+        ::-moz-placeholder {
+            font-size: 12px;
+        }
+
+        :-ms-input-placeholder {
+            font-size: 12px;
+        }
+
+        input {
+            word-wrap: break-word;
+            word-break: normal;
+        }
+    </style>
+</head>
+<body>
+<!--<div id="map"></div>-->
+<div class="wrapper wrapper-content">
+    <div class="row">
+        <div class="col-sm-12 animated fadeInRight" style="">
+            <div style="display: inline;position: relative">
+                <h2 class="page-heading"
+                    style="padding: 0;font-weight: bold;border: 0;display: inline;top: 0px;position: fixed;z-index: 999;left: 20px;">
+                    Built Your Own Data Map</h2>
+                <div style="padding: 0px 10px 0px 20px;width: 220px;font-weight: bold;border: 0;display: inline;top: 0px;position: fixed;z-index: 999;left: 20px;top: 60px;background-color: #f3f3f4;height: 620px;max-height: 620px;">
+
+                    <!--<div class="box box-success">-->
+                        <!--<div class="box-header with-border">-->
+                            <!--<h2 id="" style="font-weight: 400;display: inline;">地图编辑</h2>-->
+                            <!--<div class="box-tools pull-right">-->
+                                <!--<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--&lt;!&ndash; /.box-header &ndash;&gt;-->
+                        <!--<div class="box-body no-padding" style="display: block;">-->
+
+                            <!--<ul id="editMapList" class="folder-list m-b-md" style="padding: 0;display: block;">-->
+                                <!--<li>-->
+                                    <!--<a href="javascript:void(0);"> <i class="fa fa-file-text "></i> 主标题</a>-->
+                                    <!--<input type="text" id="mainTitle" class="form-control" onkeypress=' '-->
+                                           <!--placeholder="请输入主标题并回车">-->
+                                <!--</li>-->
+                                <!--<li>-->
+                                    <!--<a href="javascript:void(0);"> <i class="fa fa-file-text-o"></i> 副标题</a>-->
+                                    <!--<input type="text" id="subTitle" class="form-control" placeholder="请输入副标题并回车">-->
+                                <!--</li>-->
+                            <!--</ul>-->
+                        <!--</div>-->
+                        <!--&lt;!&ndash; /.box-body &ndash;&gt;-->
+                    <!--</div>-->
+
+                    <h2 id="editMapH" style="font-weight: 400;display: none;">地图编辑</h2>
+                    <!--<div class="box-tools pull-right">-->
+                        <!--<i type="button"  class="fa fa-pencil text-legend" data-widget="remove"></i>-->
+                        <i id="removeMapEdit" class="fa fa-times" style="margin-left: 60px;cursor:pointer;display:none;padding: 2px 6px 3px;margin-bottom: 10px;" ></i>
+                    <!--</div>-->
+                    <ul id="editMapList" class="folder-list m-b-md" style="padding: 0;display: none;">
+                        <li>
+                            <a href="javascript:void(0);"> <i class="fa fa-file-text "></i> 主标题</a>
+                            <input type="text" id="mainTitle" class="form-control" onkeypress=' '
+                                   placeholder="请输入主标题并回车">
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);"> <i class="fa fa-file-text-o"></i> 副标题</a>
+                            <input type="text" id="subTitle" class="form-control" placeholder="请输入副标题并回车">
+                        </li>
+                    </ul>
+                    <h2 style="font-weight: 400">关键数据说明</h2>
+                    <button type="button"
+                            style="margin-top: 0;padding: 2px 6px 3px;background-color: #ADD8E6;border-color: #ADD8E6;"
+                            id="addItem" class="btn btn-default pull-right"><i class="fa fa-plus"></i> Add item
+                    </button>
+                    <ul class="category-list" style="padding: 0;width: 198px;padding-top: 23px;" id="productTypeList">
+                        <!--<li style="padding: 6px;">-->
+                        <!--<a href="javascript:void(0);" flag="true"> <i class="fa fa-circle text-navy"></i> 点击修改</a>-->
+                        <!--<textarea autofocus class="txtarea" style="width: 100%;height: 100%;min-height: 60px;display: block;border: lightskyblue;/*background-color: #FAFAD2*/"></textarea>-->
+                        <!--</li>-->
+                    </ul>
+                </div>
+                <div class="dropdown profile-element"
+                     style="left: 74.0250814332248%;top: 35px;z-index: 999;position: fixed">
+                    <a data-toggle="dropdown" class="dropdown-toggle" id="editMapshow" href="#">
+                        <i class="fa fa-pencil text-legend icon-2x"></i><br>
+                        <p class="editlenged" style="margin-left: -5px;">地图编辑</p>
+                    </a>
+
+                </div>
+                <div class="dropdown profile-element"
+                    style="left: 76.0250814332248%;top: 35px;z-index: 999;position: fixed">
+                    <a data-toggle="dropdown" class="dropdown-toggle" id="downloadImg" href="#">
+                        <i class="fa fa-download text-legend icon-2x"></i><br>
+                        <p class="editlenged" style="margin-left: -5px;">下载图片</p>
+                    </a>
+                </div>
+                <div class="dropdown profile-element"
+                     style="left: 78.0250814332248%;top: 35px;z-index: 999;position: fixed">
+                    <a data-toggle="dropdown" class="dropdown-toggle" id="sendEmail" href="#">
+                        <i class="fa fa-envelope-o text-legend icon-2x"></i><br>
+                        <p class="editlenged" style="margin-left: -5px;">发送</p>
+                    </a>
+
+                </div>
+                <div class="dropdown profile-element"
+                     style="left: 80.214983713355%;top: 27px;z-index: 999;position: fixed;width: 200px;">
+                    <div class="row head">
+                        <div class="col-lg-12">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="locateCity" placeholder="请输入定位城市">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-info" type="button" id="btnlocateArea"><span
+                                            class="glyphicon glyphicon-search"></span></button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mail-box" style="border: 0">
+                <div class="mail-body" id="mapDiv" style="height: 700px;">
+
+                </div>
+            </div>
+        </div>
+        <h2 class="page-heading" style="padding: 0;font-weight: bold" id="s00001">编辑数据观点</h2>
+        <div class="mail-box">
+            <div class="mail-text " style="min-height: 100px;">
+                <div class="summernote">
+                    <div id="showNotes"
+                         style="width: 100%;height: 100%;min-height: 100px;display: block;border: lightskyblue">
+                        说明该图适用范围， 点击即可自定义添加进去想要表达的数据观点
+                    </div>
+                    <textarea id="editNotes"
+                              style="width: 100%;height: 100%;min-height: 100px;display: none;border: lightskyblue;background-color: #FAFAD2"></textarea>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="mail-body text-right tooltip-demo" style="padding: 5px 10px;">
+                <a id="saveEditNotes" href="javascript:void (0);" class="btn btn-sm btn-primary" data-toggle="tooltip"
+                   data-placement="top" title="Save"><i class="fa fa-save"></i> 保存</a>
+                <a id="quitEditNotes" href="javascript:void (0);" class="btn btn-white btn-sm" data-toggle="tooltip"
+                   data-placement="top" title="Quit"><i class="fa fa-times"></i> 放弃</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/main.min.js"></script>
+<script src="js/jquery.min.js?v=2.1.4"></script>
+<script src="js/bootstrap.min.js?v=3.3.5"></script>
+<script type="text/javascript" src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script>
+<script src="js/jquery-ui.min.js"></script>
+<!--<script src="js/echarts.min.js"></script>-->
+<script src="js/china.js"></script>
+<script src="js/zeroModal.min.js"></script>
+<script src="js/layer.js"></script>
+<script src="js/html2canvas.js"></script>
+<script src="js/mapInteraction.js"></script>
+</body>
+</html>

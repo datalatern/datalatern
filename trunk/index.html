@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="DataScraping.co Hosted Solution">
+    <meta name="referrer" content="no-referrer">
+    <link rel="icon" type="image/png" href="/cloud-app/img/favicon.png">
+    <link rel="dns-prefetch" href="//cdn.datascraping.co">
+    <link rel="dns-prefetch" href="//api.datascraping.co">
+    <link rel="dns-prefetch" href="//www.datascraping.co">
+
+    <!-- bootstrap 3.3.6 -->
+    <link href="css/mybootstrap.css" rel="stylesheet" type="text/css">
+    <link href="css/myTest.css" rel="stylesheet" type="text/css">
+    <link href="css/mymagic-check.css" rel="stylesheet" type="text/css">
+    <link href="css/mybootstrap-table.css" rel="stylesheet" type="text/css">
+    <link href="css/mybootstrap-switch.css" rel="stylesheet" type="text/css">
+    <!--原始样式原始样式原始样式-->
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+    <link href="css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link href="css/style.min.css?v=4.0.0" rel="stylesheet">
+    <!-- font Awesome -->
+    <link href="css/myfont-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <style>
+        body{
+            overflow: hidden;
+        }
+    </style>
+    <title>
+        Welcome to DataLighten Homepage
+    </title>
+    <!--<script src="https://resend.io/widget.js" async=""></script>-->
+</head>
+<body id="cloudApp" class="skin-black ng-scope  pace-done"
+      style="min-height: 924px;">
+<div class="pace  pace-inactive">
+    <div class="pace-progress" data-progress-text="100%" data-progress="99" style="width: 100%;">
+        <div class="pace-progress-inner"></div>
+    </div>
+    <div class="pace-activity"></div>
+</div>
+
+<!-- API Credentials by Role : If logged in -->
+
+<meta id="apiID" content="LL4PPQD4PE">
+<meta id="apiKey" content="448b9520583325801be781132572c799">
+<meta id="publicKey" content="02f1b6ef4158fe35f090929239578382">
+<meta id="plan" content="FREE">
+
+
+<!-- header logo: style can be found in header.less -->
+<header class="header">
+    <a href="/" class="logo">
+        <img src="img/datalanternLogo.png" alt="Data Scraping"
+             style="width:175px;">
+    </a>
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top" role="navigation">
+        <!-- Sidebar toggle button-->
+        <a href="#" class="navbar-btn sidebar-toggle " data-toggle="offcanvas" role="button" id="changeMenuStyle">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </a>
+
+        <form action="/doc/search.aspx" method="get" class="sidebar-form ng-pristine ng-valid">
+            <div class="input-group">
+                <input type="text" name="q" class="form-control" placeholder="Search...">
+                <span class="input-group-btn">
+                                <button type="submit" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
+                    </span>
+            </div>
+        </form>
+        <div class="navbar-right hidden-xs hidden-sm hidden-md">
+            <ul class="nav navbar-nav">
+                <li class="dropdown user user-menu">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <span>帮助 <i class="caret"></i></span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-custom dropdown-menu-right">
+                        <li>
+                            <a target="_blank" href="/doc/">Knowledge Base</a>
+                            <a target="_blank" href="/doc/video-tutorial.aspx">Video Tutorials</a>
+                            <a target="_blank" href="/doc/rest-api/">API Docs</a>
+                            <a target="_blank" href="/contact.aspx">Contact Support</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- User Account: style can be found in dropdown.less -->
+                <li class="dropdown user user-menu">
+
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-user"></i>
+                        <span>
+
+                                              <span id="loggedIn_LoginName">admin</span>
+
+                                    <i class="caret"></i>
+                                </span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-custom dropdown-menu-right">
+                        <li class="dropdown-header text-center">Account</li>
+                        <li>
+                            <a href="/cloud-app/settings/">
+                                <i class="fa fa-user fa-fw pull-right"></i>
+                                Profile &amp; Settings
+                            </a>
+                            <a href="/cloud-app/settings/password-reset.aspx">
+                                <i class="fa fa-cog fa-fw pull-right"></i>
+                                Password Reset
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="/cloud-app/log-out.aspx"><i class="fa fa-ban fa-fw pull-right"></i> Logout</a>
+                        </li>
+                    </ul>
+
+                </li>
+            </ul>
+            <!--<a href="/cloud-app/agents/new.aspx"-->
+            <!--style="margin-top: 8px;margin-right: 35px;color: #333;background: #FDD922;border-radius:25px;"-->
+            <!--class="btn pull-right"><i class="fa fa-plus"></i> New Agent</a>-->
+        </div>
+    </nav>
+</header>
+<div class="wrapper row-offcanvas row-offcanvas-left" style="min-height: 616px;padding: 0;">
+    <!-- Left side column. contains the logo and sidebar -->
+    <aside class="left-side sidebar-offcanvas " id="leftAside" style="min-height: 924px;">
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
+            <!-- Sidebar user panel -->
+            <div class="user-panel">
+                <div class="pull-left image">
+                    <img src="https://cdn.datascraping.co/icons/avatar5.png"
+                         onerror="this.onerror=null;this.src='https://cdn.datascraping.co/icons/avatar5.png';"
+                         class="img-circle" alt="User Image">
+                </div>
+                <div class="pull-left info">
+                    <p class="username">Hello,
+                        <span id="LoginView1_LoginName">admin</span>
+                    </p>
+                    <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                </div>
+            </div>
+            <!-- search form -->
+            <!--<form action="/doc/search.aspx" method="get" class="sidebar-form ng-pristine ng-valid">-->
+                <!--<div class="input-group">-->
+                    <!--<input type="text" name="q" class="form-control" placeholder="Search...">-->
+                    <!--<span class="input-group-btn">-->
+                                <!--<button type="submit" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>-->
+                    <!--</span>-->
+                <!--</div>-->
+            <!--</form>-->
+            <!--具体入口栏目-->
+            <ul class="sidebar-menu" id="side-menu">
+
+                <li data-page="dashboard" class="active">
+                    <a href="#" onclick="gotoHomepage();">
+                        <i class="fa fa-dashboard"></i> <span>主页</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <i class="fa fa-users"></i>
+                        <span class="nav-label">用户频道</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level collapse">
+                        <li>
+                            <a href="#">用户总体 <span class="fa arrow"></span></a>
+                            <ul class="nav nav-third-level">
+                                <li><a class="J_menuItem" href="user_month.html">客户省份分布</a>
+                                </li>
+                                <li><a class="J_menuItem" href="graph_echarts.html">增长趋势</a>
+                                </li>
+                                <li><a class="J_menuItem" href="graph_rickshaw.html">升/降</a>
+                                </li>
+                                <li><a class="J_menuItem" href="capital_user_comparison.html">标杆对比</a>
+                                </li>
+                                <li><a class="J_menuItem" href="capital_user_comparison2016.html">浏览量对比</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">用户画像 <span class="fa arrow"></span></a>
+                            <ul class="nav nav-third-level">
+                                <li><a class="J_menuItem" href="user_chanel.html">年龄区间</a>
+                                </li>
+                                <li><a class="J_menuItem" href="contact_chanel.html">接触渠道</a>
+                                </li>
+                                <li><a class="J_menuItem" href="location_move.html">客户移动轨迹</a>
+                                </li>
+                                <li><a class="J_menuItem" href="run.html">用户移动路线</a>
+                                </li>
+                                <li><a class="J_menuItem" href="form_file_upload.html">性别区间</a>
+                                </li>
+                                <li><a class="J_menuItem" href="mapinter.html">省份来源</a>
+                                </li>
+                                <li><a class="J_menuItem" href="form_avatar.html">移动端分析</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#">用户监控 <span class="fa arrow"></span></a>
+                            <ul class="nav nav-third-level">
+                                <li><a class="J_menuItem" href="user_index.html">用户省份来源</a>
+                                </li>
+                                <li><a class="J_menuItem" href="graph_morris.html">用户获取</a>
+                                </li>
+                                <li><a class="J_menuItem" href="form_file_upload.html">用户成长</a>
+                                </li>
+                                <li><a class="J_menuItem" href="form_avatar.html">客户机会</a>
+                                </li>
+                                <li><a class="J_menuItem" href="form_avatar.html">客户转化</a>
+                                </li>
+                                <li><a class="J_menuItem" href="graph_morris.html">客户维系</a>
+                                </li>
+                                <li><a class="J_menuItem" href="form_file_upload.html">客户管理</a>
+                                </li>
+                                <li><a class="J_menuItem" href="graph_metrics.html">客户社交互动</a>
+                                </li>
+                                <li><a class="J_menuItem" href="graph_sparkline.html">APP-SDK</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="mailbox.html"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">市场频道</span>
+                        <!--<span class="label label-warning pull-right">16</span>--><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse">
+                        <li>
+                            <a href="#">市场总体 <span class="fa arrow"></span></a>
+                            <ul class="nav nav-third-level">
+                                <li><a class="J_menuItem" href="dynamic_trend.html">动态走势图</a>
+                                </li>
+                                <li><a class="J_menuItem" href="graph_morris.html">市场位置（标杆）</a>
+                                </li>
+                                <li><a class="J_menuItem" href="graph_metrics.html">行业排名（竞争对手PV/UV）</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#">竞品分析 <span class="fa arrow"></span></a>
+                            <ul class="nav nav-third-level">
+                                <li><a class="J_menuItem" href="graph_morris.html">竞争对手产品</a>
+                                </li>
+                                <li><a class="J_menuItem" href="graph_metrics.html">产品热度分析</a>
+                                </li>
+                                <li><a class="J_menuItem" href="mail_detail.html">评价分析</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#">行业分析 <span class="fa arrow"></span></a>
+                            <ul class="nav nav-third-level">
+                                <li><a class="J_menuItem" href="graph_morris.html">行业政策分析</a>
+                                </li>
+                                <li><a class="J_menuItem" href="graph_metrics.html">行业动向分析</a>
+                                </li>
+                                <li><a class="J_menuItem" href="mail_detail.html">子主题</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#">内部市场分析 <span class="fa arrow"></span></a>
+                            <ul class="nav nav-third-level">
+                                <li><a class="J_menuItem" href="graph_morris.html">逻辑/分析/标准/方法论</a>
+                                </li>
+                                <li><a class="J_menuItem" href="supply_dist.html">供应商分布</a>
+                                </li>
+                                <li><a class="J_menuItem" href="mail_detail.html">子主题</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li><a class="J_menuItem" href="graph_metrics.html">第三方数据分析</a>
+                        </li>
+                        <li><a class="J_menuItem" href="graph_metrics.html">同类分析</a>
+                        </li>
+                        <li><a class="J_menuItem" href="graph_metrics.html">市场容易分析</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-industry" aria-hidden="true"></i> <span
+                            class="nav-label">行业创新应用</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse">
+                        <li>
+                            <a href="#">航空业 <span class="fa arrow"></span></a>
+                            <ul class="nav nav-third-level">
+                                <li><a class="J_menuItem" href="geo-lines.html">飞行世界图</a>
+                                </li>
+                                <li><a class="J_menuItem" href="geoLine/flight_demo.html">运营飞行监控</a>
+                                </li>
+                                <li><a class="J_menuItem" href="capital_flight_station.html">飞机路经机场图</a>
+                                </li>
+                                <li><a class="J_menuItem" href="capital_flight_station2016.html">飞机中转机场图</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#">汽车行业 <span class="fa arrow"></span></a>
+                            <ul class="nav nav-third-level">
+                                <li><a class="J_menuItem" href="graph_morris.html">汽车保险</a>
+                                </li>
+                                <li><a class="J_menuItem" href="graph_metrics.html">汽车理赔</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#">气象自然灾害 <span class="fa arrow"></span></a>
+                            <ul class="nav nav-third-level">
+                                <li><a class="J_menuItem" href="graph_morris.html">湖北水灾热力图</a>
+                                </li>
+                                <li><a class="J_menuItem" href="graph_metrics.html">自然灾害监控</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#">政府行业 <span class="fa arrow"></span></a>
+                            <ul class="nav nav-third-level">
+                                <li><a class="J_menuItem" href="graph_morris.html">行政刑事案件</a>
+                                </li>
+                                <li><a class="J_menuItem" href="graph_metrics.html">案件分布图</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-desktop"></i> <span class="nav-label">行业创新研究专家</span><span
+                            class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse">
+                        <li><a class="J_menuItem" href="customize_chart.html">行业销量分析</a>
+                        </li>
+                        <li><a class="J_menuItem" href="profile.html">行业洞察分析</a>
+                        </li>
+                        <li>
+                            <a href="#">同类分析 <span class="fa arrow"></span></a>
+                            <ul class="nav nav-third-level">
+                                <li><a class="J_menuItem" href="projects.html">项目</a>
+                                </li>
+                                <li><a class="J_menuItem" href="project_detail.html">项目详情</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-flask"></i> <span class="nav-label">SaaS数据分析产品</span><span
+                            class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse">
+                        <li><a class="J_menuItem" href="form_file_upload.html">CSV加载可视化</a>
+                        </li>
+                        <li>
+                            <a href="#">阅后即焚 <span class="fa arrow"></span></a>
+                            <ul class="nav nav-third-level">
+                                <li>
+                                    <a class="J_menuItem" href="fontawesome.html">Font Awesome</a>
+                                </li>
+                                <li>
+                                    <a class="J_menuItem" href="glyphicons.html">Glyphicon</a>
+                                </li>
+                                <li>
+                                    <a class="J_menuItem" href="iconfont.html">阿里巴巴矢量图标库</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">企业运营层面数据收集 <span class="fa arrow"></span></a>
+                            <ul class="nav nav-third-level">
+                                <li><a class="J_menuItem" href="draggable_panels.html">拖动面板</a>
+                                </li>
+                                <li><a class="J_menuItem" href="agile_board.html">任务清单</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-table"></i> <span class="nav-label">数据采集器</span><span
+                            class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse">
+                        <li><a class="J_menuItem" href="table_basic.html">Internet采集</a>
+                        </li>
+                        <li><a class="J_menuItem" href="table_data_tables.html">内部小数据</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-android" aria-hidden="true"></i> <span
+                            class="nav-label">分析模型/机器学习</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse">
+                        <li><a class="J_menuItem" href="basic_gallery.html">业务监控</a>
+                        </li>
+                        <li><a class="J_menuItem" href="carousel.html">预测</a>
+                        </li>
+                        <li><a class="J_menuItem" href="layerphotos.html">预警</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-users"></i>
+                        <span class="nav-label">基础图库演示</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level collapse">
+                        <li>
+                            <a href="#">ECharts <span class="fa arrow"></span></a>
+                            <ul class="nav nav-third-level">
+                                <li><a class="J_menuItem" href="ECharts/boxplotGraph/morley.html">莫雷实验</a>
+                                </li>
+                                <li><a class="J_menuItem" href="ECharts/KLine/candle.html">股票交易</a>
+                                </li>
+                                <li><a class="J_menuItem" href="ECharts/map/chineseAirline.html">中国航线图</a>
+                                </li>
+                                <li><a class="J_menuItem" href="ECharts/map/map-search.html">地图搜索</a>
+                                </li>
+                                <li><a class="J_menuItem" href="ECharts/map/userSource.html">用户省份来源</a>
+                                </li>
+                                <li><a class="J_menuItem" href="ECharts/map/worldFlights.html">世界航线</a>
+                                </li>
+                                <li><a class="J_menuItem" href="ECharts/relationshipDiagram/relation.html">关系图</a>
+                                </li>
+                                <li><a class="J_menuItem" href="ECharts/thermodynamic/airQuality.html">主要空气质量</a>
+                                </li>
+                                <li><a class="J_menuItem" href="ECharts/thermodynamic/thermal.html">热力分布图</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">ReCharts <span class="fa arrow"></span></a>
+                            <ul class="nav nav-third-level collapse">
+                                <li><a class="J_menuItem" href="ReCharts/ComposedChartWithAxisLabels.html">复合图</a>
+                                </li>
+                                <li><a class="J_menuItem" href="ReCharts/CustomContentTreemap.html">自定义内容树图</a>
+                                </li>
+                                <li><a class="J_menuItem" href="ReCharts/CustomizedDotLineChart.html">自定义点线图</a>
+                                </li>
+                                <li><a class="J_menuItem" href="ReCharts/PositiveAndNegativeBarChart.html">正负柱状图</a>
+                                </li>
+                                <li><a class="J_menuItem" href="ReCharts/SimpleAreaChart.html">简单区域图</a>
+                                </li>
+                                <li><a class="J_menuItem" href="ReCharts/SimpleBarChart.html">简单柱状图</a>
+                                </li>
+                                <li><a class="J_menuItem" href="ReCharts/SimpleRadialBarChart.html">简单辐射柱图</a>
+                                </li>
+                                <li><a class="J_menuItem" href="ReCharts/SimpleScatterChart.html">简单散点图</a>
+                                </li>
+                                <li><a class="J_menuItem" href="ReCharts/SynchronizedAreaChart.html">同步区域图</a>
+                                </li>
+                                <li><a class="J_menuItem" href="ReCharts/ThreeDimScatterChart.html">三维散点图</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#">HighCharts <span class="fa arrow"></span></a>
+                            <ul class="nav nav-third-level collapse">
+                                <li><a class="J_menuItem" href="HighCharts/3D_bubbles.html">3D气泡图</a>
+                                </li>
+                                <li><a class="J_menuItem"
+                                       href="HighCharts/3D_column_with_null_and_0_values.html">3D柱状图</a>
+                                </li>
+                                <li><a class="J_menuItem" href="HighCharts/3D_pie.html">3D饼图</a>
+                                </li>
+                                <li><a class="J_menuItem" href="HighCharts/3D_scatter_chart.html">3D散点图</a>
+                                </li>
+                                <li><a class="J_menuItem" href="HighCharts/Advanced_timeline.html">高级时间轴图</a>
+                                </li>
+                                <li><a class="J_menuItem" href="HighCharts/Ajax_loaded_data.html">加载数据图</a>
+                                </li>
+                                <li><a class="J_menuItem" href="HighCharts/Area_range_and_line.html">区域和线图</a>
+                                </li>
+                                <li><a class="J_menuItem" href="HighCharts/Basic_area.html">基本面积图</a>
+                                </li>
+                                <li><a class="J_menuItem" href="HighCharts/Bubble_chart.html">气泡图</a>
+                                </li>
+                                <li><a class="J_menuItem" href="HighCharts/Click_to_add_a_point.html">点击加点图</a>
+                                </li>
+                                <li><a class="J_menuItem" href="HighCharts/Clock.html">时钟图</a>
+                                </li>
+                                <li><a class="J_menuItem" href="HighCharts/Column_line_and_pie.html">柱线面积复合图</a>
+                                </li>
+                                <li><a class="J_menuItem" href="HighCharts/Dual_axes_line_and_column.html">双轴线柱图</a>
+                                </li>
+                                <li><a class="J_menuItem" href="HighCharts/Fixed_tooltip_with_HTML.html">固定提示图</a>
+                                </li>
+                                <li><a class="J_menuItem" href="HighCharts/Funnel_chart.html">号角图</a>
+                                </li>
+                                <li><a class="J_menuItem" href="HighCharts/Heat_map.html">热力图</a>
+                                </li>
+                                <li><a class="J_menuItem" href="HighCharts/Large_heat_map.html">大热力图</a>
+                                </li>
+                                <li><a class="J_menuItem" href="HighCharts/Meteogram.html">气象图</a>
+                                </li>
+                                <li><a class="J_menuItem" href="HighCharts/Polygon_series.html">多边序列图</a>
+                                </li>
+                                <li><a class="J_menuItem" href="HighCharts/Pyramid_chart.html">金字塔图</a>
+                                </li>
+                                <li><a class="J_menuItem" href="HighCharts/Scatter_plot.html">散点图</a>
+                                </li>
+                                <li><a class="J_menuItem" href="HighCharts/Semi_circle_donut.html">半圆图</a>
+                                </li>
+                                <li><a class="J_menuItem" href="HighCharts/Solid_gauge.html">固态计量图</a>
+                                </li>
+                                <li><a class="J_menuItem" href="HighCharts/Spiderweb.html">蜘蛛网图</a>
+                                </li>
+                                <li><a class="J_menuItem" href="HighCharts/Spline_updating_each_second.html">动态图</a>
+                                </li>
+                                <li><a class="J_menuItem" href="HighCharts/Synchronized_charts.html">同步图</a>
+                                </li>
+                                <li><a class="J_menuItem" href="HighCharts/Time_series.html">时间基线图</a>
+                                </li>
+                                <li><a class="J_menuItem" href="HighCharts/Tree_map_with_color_axis.html">树图</a>
+                                </li>
+                                <li><a class="J_menuItem" href="HighCharts/VU_meter.html">VU计量图</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+        <!-- /.sidebar -->
+    </aside>
+
+
+    <aside class="right-side " id="rightAside" >
+    <div id="page-wrapper" class="gray-bg dashbard-1" style="height: 924px;margin: 0;overflow-x: scroll">
+        <div class="row J_mainContent" id="content-main">
+            <iframe id="mainContentIframe" class="J_iframe" name="iframe0" width="100%" height="100%" src="index_homepage.html?v=4.0" frameborder="0"  seamless></iframe>
+        </div>
+    </div>
+    </aside>
+
+</div>
+
+</body>
+<script src="js/jquery.min.js?v=2.1.4"></script>
+<script src="js/bootstrap.min.js?v=3.3.5"></script>
+<script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+<script src="js/plugins/layer/layer.min.js"></script>
+<script src="js/hplus.min.js?v=4.0.0"></script>
+<script type="text/javascript" src="js/contabs.min.js"></script>
+<script src="js/plugins/pace/pace.min.js"></script>
+
+
+<script>
+    var menuFlag=false;
+    $(window).load(function () {
+        // Animate loader off screen
+        $("#loader").fadeOut("slow");
+        $("#contentBody").removeClass("hidden");
+        $("#changeMenuStyle").on("click",function () {
+            if(menuFlag===false){
+                $("#leftAside").addClass("collapse-left");
+                $("#rightAside").addClass("strech");
+                menuFlag=true;
+            }else{
+                $("#leftAside").removeClass("collapse-left");
+                $("#rightAside").removeClass("strech");
+                menuFlag=false;
+            }
+        });
+    });
+    function gotoHomepage() {
+        $(".J_iframe").css("display","none");
+        $("#mainContentIframe").css("display","");
+    }
+</script>
+</html>
