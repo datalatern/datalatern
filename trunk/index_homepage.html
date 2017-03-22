@@ -14,6 +14,11 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/d3.v4.min.js"></script>
     <script src="js/echarts.min.js"></script>
+    <style media="screen">
+       a:hover {
+         text-decoration: none;
+       }
+    </style>
 </head>
 <body style="overflow-x: hidden" class="gray-bg">
 <div class="row">
@@ -36,11 +41,11 @@
     </div>
 
     <div class="col-sm-3">
-        <div class="innerLine" style="padding: 5px 10px;">
-            <p style="z-index: 99;"><a style="color: inherit;text-decoration:none" href="../staticPages/charts/charts.html">销售预测</a></p>
+        <a href="../staticPages/charts/salesForecast.html" class="innerLine" style="padding: 5px 10px;display: block;width: 100%;cursor: pointer;height: 220px;">
+            <p style="z-index: 99;color: inherit;text-decoration: none;">销售预测</p>
             <h4 style="z-index: 99;margin-bottom: 0px;">6,594</h4>
             <div id="predictLine"></div>
-        </div>
+        </a>
     </div>
 </div>
 <div class="row">

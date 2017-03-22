@@ -2903,7 +2903,10 @@ body > .header .logo .icon {
     border-bottom: 1px solid #eee;
 }
 .skin-black .navbar .nav a {
-    color: #f6f6f6;
+    /*color: #f6f6f6;*/
+}
+.dropdown-toggle {
+  color: #f6f6f6;
 }
 .skin-black .navbar .nav > li > a:hover,
 .skin-black .navbar .nav > li > a:active,

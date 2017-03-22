@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<!-- jquery & ui plug -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+	<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js" type="text/javascript"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript"></script>
+	<!-- echarts plug -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/3.4.0/echarts.min.js" type="text/javascript" charset="utf-8"></script>
+	<!-- bootstrap plug -->
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<!-- bootstrap table plug -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/bootstrap-table.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/bootstrap-table.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/locale/bootstrap-table-zh-CN.min.js"></script>
+	<!-- css -->
+	<!-- <link rel="stylesheet" href="styles.css"> -->
+	<style media="screen">
+		body {
+			margin: 0;
+			padding: 0;
+			border: 0;
+		}
+		.sub-header {
+			padding-bottom: 10px;
+			border-bottom: 1px solid #eee;
+		}
+		.salesForecastMain {
+			padding: 20px;
+		}
+		.salesForecastMain h2 {
+			margin: 0;
+		}
+		.salesForecastMain p {
+			margin-top: 5px;
+		}
+		.salesForecastMain #salesChart {
+			width: 90%;
+			height: 500px;
+		}
+		.salesForecastMain .header-title {
+			text-align: center;
+			font-size: 18px;
+		}
+		@media (min-width: 768px) {
+			.main {
+				padding-right: 40px;
+				padding-left: 40px;
+			}
+		}
+		.table-responsive #datepicker {
+			margin-left: 10px;
+		}
+		.table-responsive #datepicker {
+			outline: none;
+		}
+	</style>
+</head>
+<body>
+	<div class="salesForecastMain">
+		<h2 class="page-header">销售预测图</h2>
+		<p class="header-title">市场部未来3个月销售额预测线(2016~2017)</p>
+		<p class="header-title">基于市场部前2016年销售额</p>
+		<div id="salesChart"></div>
+		<h2 class="sub-header">销售准备</h2>
+		<div class="table-responsive">
+			<p>结束日期: <input type="text" id="datepicker"></p>
+			<table id="createTable"></table>
+		</div>
+	</div>
+	<!-- <img src="http://oh3804si5.bkt.clouddn.com/arrow-left-01.png" class="backOffArrow"></img> -->
+	<!-- js -->
+	<script type="text/javascript" src="backOff.js"></script>
+	<script type="text/javascript" src="SalesForecast.js"></script>
+  <script type="text/javascript">
+		DL.Layout.SalesForecast.init();
+		DL.Layout.BackOff.init();
+  </script>
+</body>
+</html>
